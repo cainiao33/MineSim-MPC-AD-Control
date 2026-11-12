@@ -5,6 +5,8 @@
   <a href="README_en.md"><img src="https://img.shields.io/badge/切换语言-English-blue?style=for-the-badge" alt="English"></a>
 </p>
 
+> **赛题**：[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) — **决策规划控制**任务（MineSim 回放仿真）。大赛官网：[aicompetition-pz.com](https://www.aicompetition-pz.com/) · 赛题详情页：[deepvision 平台](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)。
+>
 > **概述**：面向 MineSim / mine_sim 回放仿真的**策略叠加层**——场景自适应配置银行 + SAS 同码闭环候选 + STPP/重定时前馈 + v63 全轨迹 SQP / 目标多边形派发。覆盖官方 `devkit/`，不改 Env / 地图 / 评分器。
 >
 > **成绩**：线上可绑定包 **v58 ≈ 96.12**（183 场均分 96.121366…）· 本地完整最佳 **v63** 公开 40 ≈ **97.57** / 已知 43 ≈ **97.10**（零车撞、零压界；**非**线上认证包）。
@@ -18,10 +20,11 @@
 > python devkit/__main__.py --scenario Scenario-dapai_intersection_1_3_10.json --visualize none
 > ```
 >
-> 演示视频见 [Release `v63-demo-videos`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos)；方法与模块说明见 [METHOD.md](METHOD.md) / [ARCHITECTURE.md](ARCHITECTURE.md)。
+> 演示视频：[跟随镜头](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos) · [全景视角](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos-wide)；任务与数据：[TASK_AND_DATA.md](TASK_AND_DATA.md)；方法：[METHOD.md](METHOD.md) / [ARCHITECTURE.md](ARCHITECTURE.md)。
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
+[![琶洲算法大赛](https://img.shields.io/badge/琶洲算法大赛-智能驾驶生态赛-orange.svg)](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)
 [![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_overlay-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
@@ -29,7 +32,7 @@
 
 ## 📖 项目简介
 
-本项目是矿区自动驾驶**决策规划控制**赛道方案的开源切片：在命题方 MineSim 回放基准上，用可解释的规则栈与实证银行把公开集与线上分从早期基线抬到 **v58 ≈ 96.12**（线上）/ **v63 ≈ 97.1**（本地已知 43）。
+本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)** 中**决策规划控制**赛道方案的开源切片：在命题方 MineSim 回放基准上，用可解释的规则栈与实证银行把公开集与线上分从早期基线抬到 **v58 ≈ 96.12**（线上）/ **v63 ≈ 97.1**（本地已知 43）。
 
 技术路线：**不替换仿真器本体**——Env、地图、官方评分脚本保持原样；选手侧只改 `planner` / `predictor` / `simple_control`，并叠加 SAS、STPP、全轨迹 SQP 等模块。完整 183 场 `scen_config.json` 随仓发布，作为「场景自适应策略选择」方法的一部分。
 
@@ -47,6 +50,12 @@
 ---
 
 ## 🏆 竞赛成果
+
+| 项 | 内容 |
+|------|------|
+| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **赛道** | 决策规划控制（初赛 B / 决赛 B） |
+| **官方链接** | [赛题详情](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) · [大赛官网](https://www.aicompetition-pz.com/) |
 
 | 指标 | 成绩 |
 |------|------|
@@ -69,21 +78,73 @@
 
 ---
 
+## 📋 任务场景与规控数据集
+
+| 项 | 内容 |
+|------|------|
+| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **任务** | 基于感知结果 + 位姿 / 导航 / 动力学，在无信号灯路口与动态交互场景输出转向、油门、制动 |
+| **评分** | 安全性 50% + 效率性 30% + 路径完成度 20% |
+| **数据集（官方）** | 位姿序列、导航指令、动力学状态、感知结果；非结构化道路无信号灯路口；初/决赛内容一致、分布不同 |
+| **公开包** | 2 图（大排 / 江铜）· **40** 公开场景 JSON · baseline + README；线上评测约 **183** 场 |
+| **本仓演示 11 场** | dapai `1_3_10/1_3_15/2_3_5/3_2_2` · jiangtong `1_5_3/1_5_4/5_4_1/6_2_5/6_3_3/9_3_2/9_3_3` |
+
+完整说明（含机制要点与官方链接）：[TASK_AND_DATA.md](TASK_AND_DATA.md)。官方数据须自行申领，**不**随本仓分发。
+
+---
+
 ## 🎥 演示效果
 
-> 跟随镜头渲染（锁定自车 · EMA 跟拍 · 1080²）。GIF 为仓内自动播放预览；完整 11 场 ×（1x 实时 + 0.5x 慢放）+ 86s 混剪 MP4（约 144MB）见 Release，**不**随 git 分发。
+两种渲染视角，行为同源（v63 封箱轨迹）；镜头后处理不影响仿真。
+
+| 视角 | 说明 | 完整 MP4 |
+|------|------|----------|
+| **跟随镜头** | 锁定自车 · EMA 跟拍 · 1080²，运动充满画面 | [Release `v63-demo-videos`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos)（23 文件，约 144MB） |
+| **全景 / 地图视角** | 1500² 宽幅，看清路网、背景车回放与整段路线 | [Release `v63-demo-videos-wide`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos-wide)（`wide_*`，约 55MB） |
+
+### 跟随镜头预览
 
 <p align="center">
-  <img src="assets/v63_jiangtong_6_3_3_480.gif" alt="v63 跟随镜头演示（jiangtong 6_3_3 到达段）" width="480">
+  <img src="assets/v63_follow_dapai_1_3_10_480.gif" alt="follow dapai 1_3_10" width="24%">
+  <img src="assets/v63_follow_dapai_3_2_2_480.gif" alt="follow dapai 3_2_2" width="24%">
+  <img src="assets/v63_follow_jiangtong_1_5_4_480.gif" alt="follow jiangtong 1_5_4" width="24%">
+  <img src="assets/v63_follow_jiangtong_6_3_3_480.gif" alt="follow jiangtong 6_3_3" width="24%">
 </p>
+<p align="center"><sub>左→右：dapai 1_3_10 · dapai 3_2_2 · jiangtong 1_5_4 · jiangtong 6_3_3（到达段预览）</sub></p>
 
-<p align="center"><sub>
-预览：jiangtong 6_3_3 到达段 ·
-完整视频：<a href="https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos">Release v63-demo-videos</a>
-（含 <a href="https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4">v63_highlights_1080.mp4</a> 混剪）
-</sub></p>
+混剪：[`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
 
-视频对应 v63 封箱行为的渲染展示；镜头裁剪只作用于画面，不影响仿真轨迹。
+### 全景 / 地图视角预览
+
+<p align="center">
+  <img src="assets/v63_wide_dapai_1_3_10_480.gif" alt="wide dapai 1_3_10" width="24%">
+  <img src="assets/v63_wide_jiangtong_1_5_4_480.gif" alt="wide jiangtong 1_5_4" width="24%">
+  <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="24%">
+  <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="24%">
+</p>
+<p align="center"><sub>左→右：dapai 1_3_10 · jiangtong 1_5_4 · jiangtong 6_3_3 · 全景混剪节选</sub></p>
+
+全景混剪：[`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
+
+### 成片清单（11 场 × 双倍速 × 双视角）
+
+每场均有 **1x 实时** 与 **0.5x 慢放**。跟随镜头文件名无前缀；全景文件名带 `wide_`。
+
+| 场景 | 地图 | 跟随 1x | 全景 1x |
+|------|------|---------|--------|
+| 1_3_10 | 大排 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_dapai_intersection_1_3_10_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_dapai_intersection_1_3_10_1x.mp4) |
+| 1_3_15 | 大排 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_dapai_intersection_1_3_15_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_dapai_intersection_1_3_15_1x.mp4) |
+| 2_3_5 | 大排 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_dapai_intersection_2_3_5_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_dapai_intersection_2_3_5_1x.mp4) |
+| 3_2_2 | 大排 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_dapai_intersection_3_2_2_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_dapai_intersection_3_2_2_1x.mp4) |
+| 1_5_3 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_1_5_3_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_1_5_3_1x.mp4) |
+| 1_5_4 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_1_5_4_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_1_5_4_1x.mp4) |
+| 5_4_1 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_5_4_1_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_5_4_1_1x.mp4) |
+| 6_2_5 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_6_2_5_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_6_2_5_1x.mp4) |
+| 6_3_3 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_6_3_3_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_6_3_3_1x.mp4) |
+| 9_3_2 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_9_3_2_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_9_3_2_1x.mp4) |
+| 9_3_3 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_9_3_3_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_9_3_3_1x.mp4) |
+
+绿框=自车，蓝框=背景车；红轨=背景真值未来，绿轨=预测。0.5x 与混剪见对应 Release 页。
 
 ---
 
@@ -137,6 +198,7 @@ python devkit/__main__.py \
 
 | 文档 | 内容 |
 |------|------|
+| [TASK_AND_DATA.md](TASK_AND_DATA.md) | 赛题任务、评分、规控数据集与公开场景 |
 | [METHOD.md](METHOD.md) | 四幕方法叙事 |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | 模块分组与配置发现顺序 |
 | [SCORES.md](SCORES.md) | 线上 / 本地分数分账与里程碑 |
@@ -155,7 +217,8 @@ MineSim-MPC-AD-Control/
 │   ├── sas_*.py / stpp_*.py / executed_retiming*.py
 │   └── control_full_trace_*.py / ...
 ├── scripts/overlay_into_minesim.sh
-├── assets/                  # 提分图 + 预览 gif
+├── assets/                  # 提分图 + 跟随/全景预览 gif
+├── TASK_AND_DATA.md         # 任务场景与规控数据集
 ├── METHOD.md / ARCHITECTURE.md / SCORES.md
 ├── MANIFEST.json / NOTICE / LICENSE
 └── README.md / README_en.md
