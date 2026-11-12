@@ -114,11 +114,14 @@ Highlight reel: [`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim
 ### Wide / map previews
 
 <p align="center">
-  <img src="assets/v63_wide_dapai_1_3_10_480.gif" alt="wide dapai 1_3_10" width="24%">
-  <img src="assets/v63_wide_jiangtong_1_5_4_480.gif" alt="wide jiangtong 1_5_4" width="24%">
-  <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="24%">
-  <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="24%">
+  <img src="assets/v63_wide_dapai_1_3_10_480.gif" alt="wide dapai 1_3_10" width="48%">
+  <img src="assets/v63_wide_jiangtong_1_5_4_480.gif" alt="wide jiangtong 1_5_4" width="48%">
 </p>
+<p align="center">
+  <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="48%">
+  <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="48%">
+</p>
+<p align="center"><sub>Top: Dapai 1_3_10 · Jiangtong 1_5_4　Bottom: Jiangtong 6_3_3 · wide highlights clip</sub></p>
 
 Wide highlights: [`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 
