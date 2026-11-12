@@ -7,16 +7,16 @@
 
 > **赛题**：[琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) — **决策规划控制**任务（MineSim 回放仿真）。大赛官网：[aicompetition-pz.com](https://www.aicompetition-pz.com/) · 赛题页：[topic_detail/56](https://www.aicompetition-pz.com/topic_detail/56)。
 >
-> **概述**：面向 MineSim / mine_sim 的**规控策略补丁**——按场景自适应的参数配置、SAS 闭环候选搜索、STPP / 轨迹重定时，以及 v63 全轨迹 SQP 与目标区域精修。只改选手侧 `devkit/`，不改仿真环境、地图与评分器。
+> **概述**：在官方 MineSim / mine_sim V1.1 上集成的**规控策略**——按场景自适应参数、SAS 闭环候选搜索、STPP / 轨迹重定时，以及 v63 全轨迹 SQP 与目标区域精修。本仓已含可运行仿真树（`devkit/` + 公开 `inputs/` + 地图），**克隆一次即可跑**。
 >
 > **成绩**：线上版本 **v58 ≈ 96.12**（183 场均分 96.121366…）· 本地最佳 **v63** 公开 40 场 ≈ **97.57** / 本地 43 场 ≈ **97.10**（零碰撞、零压界；v63 **未**作为线上提交版本）。
 >
-> **怎么跑**：自行准备官方 mine_sim（含 `inputs/` 与地图）。本仓只提供策略代码；覆盖安装后即可跑公开场景：
+> **怎么跑**（无需再下官方包）：
 >
 > ```bash
 > git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
-> bash MineSim-MPC-AD-Control/scripts/overlay_into_minesim.sh /path/to/official_mine_sim
-> cd /path/to/official_mine_sim
+> cd MineSim-MPC-AD-Control
+> pip install -r setup/requirements.txt
 > python devkit/__main__.py --scenario Scenario-dapai_intersection_1_3_10.json --visualize none
 > ```
 >
@@ -25,7 +25,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![琶洲算法大赛](https://img.shields.io/badge/琶洲算法大赛-智能驾驶生态赛-orange.svg)](https://www.aicompetition-pz.com/topic_detail/56)
-[![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_patch-green.svg)](NOTICE)
+[![MineSim included](https://img.shields.io/badge/MineSim-V1.1_included-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
 ---
@@ -34,7 +34,7 @@
 
 本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56)** **决策规划控制**赛道方案的开源代码：在 MineSim 回放仿真上，用可解释的规则方法与按场景管理的参数配置，将成绩从早期基线提升到线上 **v58 ≈ 96.12**、本地 **v63 ≈ 97.1**（43 场）。
 
-技术路线：**不替换仿真器**。环境、地图、官方评分脚本保持原样；只修改 `planner` / `predictor` / `simple_control`，并加入 SAS、STPP、全轨迹 SQP 等模块。仓库附带完整 183 场 `scen_config.json`，用于按场景名选择路径模式与控制参数。
+技术路线：基于官方 mine_sim V1.1，**不改仿真环境与评分器**；策略改动集中在 `planner` / `predictor` / `simple_control`，并加入 SAS、STPP、全轨迹 SQP 等模块。本仓已打好补丁，并附带公开 40 场 `inputs/`、两矿区地图与完整 183 场 `scen_config.json`。
 
 ### 相对官方 `devkit/` 的主要改动
 
@@ -45,7 +45,7 @@
 - **📐 STPP + 轨迹重定时**：在安全约束下调整执行时序（v58 线上主版本）
 - **🎯 v63 全轨迹 SQP + 目标区域**：对已通过安全检查的轨迹做目标区域精修，保留切换迟滞，避免强行换策略
 
-> 官方 `inputs/`、高精地图、隐藏场景与 Docker 提交镜像**不随本仓提供**，请通过赛题官方渠道获取。许可证为 AGPL-3.0，见 [LICENSE](LICENSE) / [NOTICE](NOTICE)。
+> 线上 183 场中的**隐藏场景**与平台评测服务不在本仓。许可证 AGPL-3.0，见 [LICENSE](LICENSE) / [NOTICE](NOTICE)；上游说明见 [UPSTREAM_README.md](UPSTREAM_README.md)。
 
 ---
 
@@ -89,7 +89,7 @@
 | **公开包** | 两张地图（大排 / 江铜）· **40** 个公开场景 · baseline 与说明文档；线上评测约 **183** 场 |
 | **本仓演示 11 场** | 大排 `1_3_10/1_3_15/2_3_5/3_2_2` · 江铜 `1_5_3/1_5_4/5_4_1/6_2_5/6_3_3/9_3_2/9_3_3` |
 
-完整说明见 [TASK_AND_DATA.md](TASK_AND_DATA.md)。官方数据需自行申请，**不**随本仓分发。
+完整说明见 [TASK_AND_DATA.md](TASK_AND_DATA.md)。公开 40 场与两矿区地图已随仓提供；隐藏评测场不在本仓。
 
 ---
 
@@ -144,30 +144,30 @@
 
 ## ⚠️ 复现说明
 
-本仓库提供的是**策略代码与方法说明**，不是完整可独立运行的仿真发行版：
-
-- 需要自行准备**官方 mine_sim** 与竞赛授权数据（地图 / 公开 `inputs/`）
+- 本仓**已含**官方 mine_sim V1.1 可运行树 + 策略补丁 + 公开 40 场与两矿区地图；**克隆一次即可复现公开场景**
 - 线上 183 场中的隐藏场景与平台评测环境**不在本仓**
-- 安装脚本会覆盖 `devkit/` 中的新增与修改文件，并在首次覆盖时备份到 `.mpc_ad_overlay_backup/`
-- `planner.py` / `simple_control.py` / `sas_hook.py` 已去掉本机绝对路径，便于移植；这三份文件的公开校验和与内部冻结源码不同，见 [MANIFEST.json](MANIFEST.json)
-
-已有官方数据包的读者可按下方步骤安装后复现公开场景；其他读者可将本仓作为回放型规控的工程参考。
+- `planner.py` / `simple_control.py` / `sas_hook.py` 已去掉本机绝对路径；公开校验和见 [MANIFEST.json](MANIFEST.json)
+- 若你已有单独的官方 mine_sim 目录，可用可选脚本 `scripts/overlay_into_minesim.sh` 仅覆盖策略文件
 
 ---
 
 ## 📦 安装与运行
 
 ```bash
-# 1) 官方 mine_sim 根目录须已含 devkit/planner.py 与 inputs/
-# 2) 安装本仓策略补丁
 git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
-bash MineSim-MPC-AD-Control/scripts/overlay_into_minesim.sh /path/to/official_mine_sim
+cd MineSim-MPC-AD-Control
 
-# 3) 在官方目录中运行公开场景（使用你的 mine_sim Python 环境）
-cd /path/to/official_mine_sim
+# Python 3.9/3.10 推荐；依赖见 setup/requirements.txt
+pip install -r setup/requirements.txt
+
+# 单场景
 python devkit/__main__.py \
   --scenario Scenario-dapai_intersection_1_3_10.json \
   --visualize none
+
+# 公开 40 场 + 评分
+python devkit/__main__.py --skip-existing --continue-on-error --visualize none
+python other_scripts/score_result.py outputs --output outputs/score.json
 ```
 
 可选环境变量：
@@ -204,16 +204,19 @@ python devkit/__main__.py \
 
 ```
 MineSim-MPC-AD-Control/
-├── overlay/devkit/          # 58 个策略文件（54 新增 + 4 修改），可直接覆盖安装
+├── devkit/                  # 官方 mine_sim + 策略补丁（已打好，直接跑）
 │   ├── planner.py / predictor.py / simple_control.py
 │   ├── centerlines/scen_config.json          # 183 场场景参数表
-│   ├── centerlines/centerlines_*_v2s.json
-│   ├── sas_*.py / stpp_*.py / executed_retiming*.py
-│   └── control_full_trace_*.py / ...
+│   └── sas_*.py / stpp_*.py / control_full_trace_*.py / ...
+├── inputs/                  # 公开 40 场场景 JSON
+├── datasets/maps/           # 大排 / 江铜语义图与 bitmap
+├── setup/requirements.txt
+├── other_scripts/           # score_result.py 等
+├── overlay/devkit/          # 策略增量镜像（可选：打到另一份官方树上）
 ├── scripts/overlay_into_minesim.sh
-├── assets/                  # 提分曲线图 + 跟随/全景 2×2 轻量预览 gif
-├── TASK_AND_DATA.md         # 任务场景与规控数据集
-├── METHOD.md / ARCHITECTURE.md / SCORES.md
+├── assets/                  # 提分曲线图 + 跟随/全景 2×2 预览 gif
+├── UPSTREAM_README.md       # 上游官方开发指南原文
+├── TASK_AND_DATA.md / METHOD.md / ARCHITECTURE.md / SCORES.md
 ├── MANIFEST.json / NOTICE / LICENSE
 └── README.md / README_en.md
 ```
@@ -222,8 +225,7 @@ MineSim-MPC-AD-Control/
 
 ## 📄 许可证与上游
 
-- 仿真器上游：MineSim / mine_sim（**AGPL-3.0**）
-- 本策略补丁同样以 AGPL-3.0 发布；与官方代码合并使用时需遵守 copyleft 义务
-- 归属与「不重分发官方数据」声明见 [NOTICE](NOTICE)
+- 仿真器上游：MineSim / mine_sim（**AGPL-3.0**），原文见 [UPSTREAM_README.md](UPSTREAM_README.md)
+- 本仓完整树（含策略）以 AGPL-3.0 发布，见 [LICENSE](LICENSE) / [NOTICE](NOTICE)
 
 若基于本仓修改并对外提供网络服务，请遵守 AGPL-3.0 的源码提供义务。

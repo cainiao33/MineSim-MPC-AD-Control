@@ -1,30 +1,37 @@
 MineSim-MPC-AD-Control
 ======================
 
-This repository publishes a strategy patch for the MineSim / mine_sim
-replay simulator used in mining autonomous-driving planning-control contests.
+This repository ships a self-contained MineSim / mine_sim V1.1 tree with our
+planning-control strategy already applied under `devkit/`. Clone once, install
+Python deps, and run the bundled public scenarios.
 
 Upstream
 --------
 - MineSim / mine_sim (and related OnSite-family simulation code) is licensed
-  under the GNU Affero General Public License v3.0 (AGPL-3.0). See LICENSE.
-- This patch modifies and extends that AGPL-covered work. Combined use with
-  the official simulator is therefore subject to AGPL-3.0.
+  under the GNU Affero General Public License v3.0 (AGPL-3.0). See LICENSE and
+  UPSTREAM_README.md (verbatim upstream guide).
+- Strategy modules modify and extend that AGPL-covered work. The combined tree
+  is therefore distributed under AGPL-3.0.
+
+What this repo ships
+--------------------
+- Stock mine_sim runtime: `devkit/` (strategy-patched), `setup/`,
+  `other_scripts/`, `Dockerfile`
+- Public contest assets needed to run locally: `inputs/` (40 public scenes)
+  and `datasets/maps/` (Dapai / Jiangtong maps)
+- Strategy delta also mirrored under `overlay/devkit/` for applying onto a
+  separately obtained official tree
 
 What this repo does NOT ship
 ----------------------------
-- Official scenario inputs (`inputs/`)
-- HD maps / datasets (`datasets/maps/` etc.)
-- Docker submission images / platform evaluation data
-- Hidden-scenario trajectory packs
-
-You must obtain the official mine_sim package and contest data through
-authorized channels, then install this patch on top of `devkit/`.
+- Hidden-scenario packs used on the 183-scene online eval
+- Pre-built Docker submission images / platform evaluation services
+- Internal experiment `outputs/`
 
 Attribution
 -----------
 Strategy code, scene configuration tables, centerline correction tables,
-documentation, and demo videos in this repository were developed for the
-Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track
-(planning/control). Local absolute paths were removed for portable release.
+documentation, and demo videos were developed for the Pazhou Algorithm
+Competition × Intelligent Driving Ecosystem Track (planning/control).
+Local absolute paths were removed for portable release.
 Online score reference: v58 ≈ 96.12; local best referenced: v63.

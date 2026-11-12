@@ -1,15 +1,16 @@
 {
   "name": "MineSim-MPC-AD-Control",
   "research_version": "v63",
-  "kind": "strategy_patch",
+  "kind": "minesim_v1.1_with_strategy",
   "created_utc": "2026-11-12T11:34:43.692389+00:00",
   "upstream_license": "AGPL-3.0",
   "source_manifest_sha256": "d90ef61c09c28799cf9ede0db9de823a2eb4975599a1c05e4ec4f319622e5d7a",
   "notes": [
-    "Contains new and modified files relative to stock mine_sim_V1.1_local/devkit.",
+    "Repo root is a runnable mine_sim V1.1 tree with strategy already applied under devkit/.",
+    "files[] lists the 58 strategy delta files (also mirrored under overlay/devkit/).",
     "planner.py / simple_control.py / sas_hook.py had absolute local paths removed for portability; their sha256 differ from the internal freeze.",
     "Full scen_config.json with 183 scene modes is included.",
-    "Official inputs/, datasets/maps/, and Docker images are NOT redistributed."
+    "Public inputs/ (40 scenes) and datasets/maps/ ship in-tree; hidden online scenes and Docker images do not."
   ],
   "scores": {
     "online_v58_total_mean": 96.12136612021858,

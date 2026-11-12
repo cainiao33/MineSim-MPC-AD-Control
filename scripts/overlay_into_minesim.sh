@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
-# Overlay MineSim-MPC-AD-Control strategy files onto an official mine_sim tree.
+# Optional: overlay strategy files onto a separately obtained official mine_sim tree.
+# Primary path: this repo already contains a patched mine_sim — just clone and run.
 set -euo pipefail
 
 usage() {
   cat <<'EOF'
 Usage: scripts/overlay_into_minesim.sh /path/to/mine_sim_root
 
-Copies overlay/devkit/* into <mine_sim_root>/devkit/, preserving relative paths.
-Does not touch inputs/, datasets/, or other official assets.
+Most users do NOT need this. The repository root is already a runnable
+mine_sim with strategy files under ./devkit/. Prefer:
 
-Example:
-  bash scripts/overlay_into_minesim.sh ~/mine_sim_V1.1_local
+  git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
+  cd MineSim-MPC-AD-Control
+  pip install -r setup/requirements.txt
+  python devkit/__main__.py --scenario Scenario-dapai_intersection_1_3_10.json --visualize none
+
+Use this script only if you already keep an official mine_sim checkout and
+want to copy overlay/devkit/* into it (first-run backups → .mpc_ad_overlay_backup/).
 EOF
 }
 
@@ -40,7 +46,6 @@ for must in planner.py predictor.py simple_control.py; do
   fi
 done
 
-# Backup stock files we overwrite (once).
 BACKUP="$TARGET/.mpc_ad_overlay_backup"
 mkdir -p "$BACKUP"
 while IFS= read -r -d '' src; do
@@ -57,7 +62,5 @@ cp -a "$OVERLAY"/. "$DEVKIT"/
 
 echo "overlay applied -> $DEVKIT"
 echo "stock backups (first run) -> $BACKUP"
-echo "verify: ls $DEVKIT/centerlines/scen_config.json"
-echo "verify: ls $DEVKIT/sas_core.py $DEVKIT/stpp_hook.py"
-echo "run a public scenario from the mine_sim root, e.g.:"
+echo "run from the target root, e.g.:"
 echo "  python devkit/__main__.py --scenario Scenario-dapai_intersection_1_3_10.json --visualize none"

@@ -1,6 +1,6 @@
 # Task Scenarios & Planning/Control Dataset
 
-> Source: official statement for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56), plus local inspection of the public `mine_sim` package. This repo does **not** redistribute official data.
+> Source: official statement for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56), plus local inspection of the public `mine_sim` package. This repo ships the public 40 scenes and both mine maps; online hidden eval scenes are out of tree.
 
 ## 1. Task (planning / decision / control)
 
@@ -37,7 +37,7 @@ Preliminary / finals: **same field schema, different distribution**.
 - Unsignalized intersections on unstructured roads
 - Includes a baseline and documentation
 
-Obtain data via official contest channels only. This repo only ships a strategy code patch.
+Public package scenes and maps ship with this repo (see §3 below). Online hidden scenes remain platform-only.
 
 ## 3. Public package (local summary)
 

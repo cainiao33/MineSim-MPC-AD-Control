@@ -9,25 +9,23 @@ observation
   → action（加速度、转向）
 ```
 
-本仓只替换 / 扩展选手侧 `devkit`；环境、地图与评分器仍使用官方树。
+本仓根目录即为可运行的 mine_sim V1.1（含 `inputs/`、`datasets/`）；策略已打进 `devkit/`。环境与评分器保持官方逻辑。
 
-## 补丁目录
+## 策略相关目录
 
 ```
-overlay/devkit/
+devkit/                   # 已打补丁，直接运行
   planner.py              # 路径模式 + 中线 / 局部修正表选择
   predictor.py            # 预测 + SAS 钩子
   simple_control.py       # 跟踪、IDM / 侧向加速度 / 转角 / 预瞄 / 让行，以及 SAS、STPP 入口
   centerlines/
     scen_config.json      # 183 场场景参数表（完整）
-    centerlines_jiangxi_jiangtong_v2s.json
+    centerlines_*.json    # 官方中线表 + v2s 局部修正表
   sas_core.py / sas_hook.py
   stpp_*.py / executed_retiming*.py
   control_full_trace_*.py / control_live_goal_polygon.py / ...
-  bitmap_route.py / bootstrap_route.py / geometry_*.py / ...
+overlay/devkit/           # 同上策略增量镜像（可选打到另一份官方树）
 ```
-
-官方自带的中线表（`centerlines_guangdong_dapai.json`、`centerlines_jiangxi_jiangtong.json`）仍使用官方包中的版本；本仓只覆盖 **v2s 局部修正表** 与 `scen_config.json`。
 
 ## 模块分组
 
@@ -54,8 +52,6 @@ overlay/devkit/
 
 ## 安装方式
 
-```bash
-bash scripts/overlay_into_minesim.sh /path/to/official_mine_sim
-```
+主路径：克隆本仓 → `pip install -r setup/requirements.txt` → `python devkit/__main__.py ...`。
 
-仅将新增与修改文件复制到 `devkit/`，并在首次覆盖时备份原文件到 `.mpc_ad_overlay_backup/`。
+可选：已有单独官方树时，`bash scripts/overlay_into_minesim.sh /path/to/official_mine_sim` 仅覆盖策略文件（首次备份到 `.mpc_ad_overlay_backup/`）。

@@ -7,16 +7,16 @@
 
 > **Competition:** [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56) — **planning / decision / control** (MineSim replay). Site: [aicompetition-pz.com](https://www.aicompetition-pz.com/) · Problem page: [topic_detail/56](https://www.aicompetition-pz.com/topic_detail/56).
 >
-> **Overview:** A **strategy patch** for MineSim / mine_sim — scene-adaptive parameters, SAS closed-loop candidate search, STPP / trajectory retiming, and v63 full-trace SQP with goal-region refinement. Only contestant `devkit/` is changed; Env, maps, and scorer stay stock.
+> **Overview:** Planning/control strategy on official MineSim / mine_sim V1.1 — scene-adaptive parameters, SAS closed-loop search, STPP / retiming, and v63 full-trace SQP with goal-region refinement. This repo **already includes** a runnable tree (`devkit/` + public `inputs/` + maps); **clone once and run**.
 >
 > **Results:** Online **v58 ≈ 96.12** (183-scene mean 96.121366…) · Local best **v63** public-40 ≈ **97.57** / local-43 ≈ **97.10** (zero collision / curb hit; v63 was **not** the uploaded online package).
 >
-> **How to run:** Bring your own official mine_sim (with `inputs/` + maps). This repo ships strategy code only:
+> **How to run** (no second download of official mine_sim):
 >
 > ```bash
 > git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
-> bash MineSim-MPC-AD-Control/scripts/overlay_into_minesim.sh /path/to/official_mine_sim
-> cd /path/to/official_mine_sim
+> cd MineSim-MPC-AD-Control
+> pip install -r setup/requirements.txt
 > python devkit/__main__.py --scenario Scenario-dapai_intersection_1_3_10.json --visualize none
 > ```
 >
@@ -25,7 +25,7 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![Pazhou Algorithm Competition](https://img.shields.io/badge/Pazhou-Intelligent_Driving-orange.svg)](https://www.aicompetition-pz.com/topic_detail/56)
-[![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_patch-green.svg)](NOTICE)
+[![MineSim included](https://img.shields.io/badge/MineSim-V1.1_included-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
 ---
@@ -34,7 +34,7 @@
 
 Open-source **planning & control** code for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56). On MineSim replay, an interpretable rule stack with per-scene parameters raised scores to online **v58 ≈ 96.12** and local **v63 ≈ 97.1** (43 scenes).
 
-Approach: **do not replace the simulator**. Env, maps, and the official scorer stay unchanged. Changes live in `planner` / `predictor` / `simple_control`, plus SAS, STPP, and full-trace SQP. The full 183-scene `scen_config.json` ships with the repo for per-scene path modes and control parameters.
+Approach: based on official mine_sim V1.1 — **env and scorer stay stock**. Changes live in `planner` / `predictor` / `simple_control`, plus SAS, STPP, and full-trace SQP. Public 40 scenes, both mine maps, and the full 183-scene `scen_config.json` ship in-tree.
 
 ### Changes vs stock `devkit/`
 
@@ -45,7 +45,7 @@ Approach: **do not replace the simulator**. Env, maps, and the official scorer s
 - **📐 STPP + retiming:** reshape executed timing under safety constraints (v58 online mainline)
 - **🎯 v63 full-trace SQP + goal region:** refine already-safe trajectories near the goal; keep switching hysteresis
 
-> Official `inputs/`, HD maps, hidden scenes, and Docker images are **not** redistributed. License: AGPL-3.0 — [LICENSE](LICENSE) / [NOTICE](NOTICE).
+> Online **hidden** scenes and the platform judge are out of tree. License: AGPL-3.0 — [LICENSE](LICENSE) / [NOTICE](NOTICE). Upstream guide: [UPSTREAM_README.md](UPSTREAM_README.md).
 
 ---
 
@@ -124,12 +124,10 @@ Per-scene 1x / 0.5x links for all 11 scenes are in the Chinese [README.md](READM
 
 ## ⚠️ Reproduction notes
 
-This repo is **strategy code + docs + demos**, not a standalone simulator drop:
-
-- Obtain **official mine_sim** and authorized contest data yourself
+- This repo **already includes** mine_sim V1.1 + strategy patch + public 40 scenes + both mine maps — **clone once** to reproduce public runs
 - Online hidden scenes and the platform judge are **out of tree**
-- The install script overwrites new/changed files under `devkit/` and backs up stock copies once to `.mpc_ad_overlay_backup/`
-- Absolute machine paths were removed from `planner.py` / `simple_control.py` / `sas_hook.py` for portability; those three public hashes differ from the internal freeze — see [MANIFEST.json](MANIFEST.json)
+- Absolute machine paths were removed from `planner.py` / `simple_control.py` / `sas_hook.py` — see [MANIFEST.json](MANIFEST.json)
+- Optional: if you keep a separate official tree, use `scripts/overlay_into_minesim.sh` to copy strategy files only
 
 ---
 
@@ -137,8 +135,8 @@ This repo is **strategy code + docs + demos**, not a standalone simulator drop:
 
 ```bash
 git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
-bash MineSim-MPC-AD-Control/scripts/overlay_into_minesim.sh /path/to/official_mine_sim
-cd /path/to/official_mine_sim
+cd MineSim-MPC-AD-Control
+pip install -r setup/requirements.txt
 python devkit/__main__.py \
   --scenario Scenario-dapai_intersection_1_3_10.json \
   --visualize none
@@ -174,6 +172,5 @@ Chinese README: [README.md](README.md).
 
 ## 📄 License & upstream
 
-- Upstream simulator: MineSim / mine_sim (**AGPL-3.0**)
-- This strategy patch is also AGPL-3.0; combined use inherits copyleft duties
-- See [NOTICE](NOTICE) for attribution and non-redistribution of official data
+- Upstream simulator: MineSim / mine_sim (**AGPL-3.0**) — see [UPSTREAM_README.md](UPSTREAM_README.md)
+- This full tree (simulator + strategy) is AGPL-3.0 — [LICENSE](LICENSE) / [NOTICE](NOTICE)
