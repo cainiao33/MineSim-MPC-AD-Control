@@ -5,7 +5,7 @@
   <a href="README_en.md"><img src="https://img.shields.io/badge/切换语言-English-blue?style=for-the-badge" alt="English"></a>
 </p>
 
-> **赛题**：[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) — **决策规划控制**任务（MineSim 回放仿真）。大赛官网：[aicompetition-pz.com](https://www.aicompetition-pz.com/) · 赛题详情页：[deepvision 平台](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)。
+> **赛题**：[琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) — **决策规划控制**任务（MineSim 回放仿真）。大赛官网：[aicompetition-pz.com](https://www.aicompetition-pz.com/) · 赛题页：[topic_detail/56](https://www.aicompetition-pz.com/topic_detail/56)。
 >
 > **概述**：面向 MineSim / mine_sim 的**规控策略补丁**——按场景自适应的参数配置、SAS 闭环候选搜索、STPP / 轨迹重定时，以及 v63 全轨迹 SQP 与目标区域精修。只改选手侧 `devkit/`，不改仿真环境、地图与评分器。
 >
@@ -24,7 +24,7 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
-[![琶洲算法大赛](https://img.shields.io/badge/琶洲算法大赛-智能驾驶生态赛-orange.svg)](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)
+[![琶洲算法大赛](https://img.shields.io/badge/琶洲算法大赛-智能驾驶生态赛-orange.svg)](https://www.aicompetition-pz.com/topic_detail/56)
 [![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_patch-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
@@ -32,7 +32,7 @@
 
 ## 📖 项目简介
 
-本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)** **决策规划控制**赛道方案的开源代码：在 MineSim 回放仿真上，用可解释的规则方法与按场景管理的参数配置，将成绩从早期基线提升到线上 **v58 ≈ 96.12**、本地 **v63 ≈ 97.1**（43 场）。
+本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56)** **决策规划控制**赛道方案的开源代码：在 MineSim 回放仿真上，用可解释的规则方法与按场景管理的参数配置，将成绩从早期基线提升到线上 **v58 ≈ 96.12**、本地 **v63 ≈ 97.1**（43 场）。
 
 技术路线：**不替换仿真器**。环境、地图、官方评分脚本保持原样；只修改 `planner` / `predictor` / `simple_control`，并加入 SAS、STPP、全轨迹 SQP 等模块。仓库附带完整 183 场 `scen_config.json`，用于按场景名选择路径模式与控制参数。
 
@@ -53,9 +53,9 @@
 
 | 项 | 内容 |
 |------|------|
-| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) |
 | **赛道** | 决策规划控制（初赛 B / 决赛 B） |
-| **官方链接** | [赛题详情](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) · [大赛官网](https://www.aicompetition-pz.com/) |
+| **官方链接** | [赛题详情](https://www.aicompetition-pz.com/topic_detail/56) · [大赛官网](https://www.aicompetition-pz.com/) |
 
 | 指标 | 成绩 |
 |------|------|
@@ -82,7 +82,7 @@
 
 | 项 | 内容 |
 |------|------|
-| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) |
 | **任务** | 结合感知结果、位姿、导航与动力学，在无信号灯路口与动态交互场景输出转向、油门、制动 |
 | **评分** | 安全性 50% + 效率性 30% + 路径完成度 20% |
 | **数据集（官方）** | 位姿序列、导航指令、动力学状态、感知结果；非结构化道路无信号灯路口；初/决赛字段一致、分布不同 |
@@ -105,28 +105,20 @@
 ### 跟随镜头预览
 
 <p align="center">
-  <img src="assets/v63_follow_dapai_1_3_10_480.gif" alt="follow dapai 1_3_10" width="24%">
-  <img src="assets/v63_follow_dapai_3_2_2_480.gif" alt="follow dapai 3_2_2" width="24%">
-  <img src="assets/v63_follow_jiangtong_1_5_4_480.gif" alt="follow jiangtong 1_5_4" width="24%">
-  <img src="assets/v63_follow_jiangtong_6_3_3_480.gif" alt="follow jiangtong 6_3_3" width="24%">
+  <img src="assets/preview_follow_2x2.gif" alt="follow-cam 2x2 preview" width="420">
 </p>
-<p align="center"><sub>左→右：大排 1_3_10 · 大排 3_2_2 · 江铜 1_5_4 · 江铜 6_3_3（到达段）</sub></p>
+<p align="center"><sub>2×2：大排 1_3_10 · 大排 3_2_2 · 江铜 1_5_4 · 江铜 6_3_3（到达段）· 轻量预览</sub></p>
 
-混剪：[`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
+完整混剪：[`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
 
 ### 全景 / 地图视角预览
 
 <p align="center">
-  <img src="assets/v63_wide_dapai_1_3_10_480.gif" alt="wide dapai 1_3_10" width="48%">
-  <img src="assets/v63_wide_jiangtong_1_5_4_480.gif" alt="wide jiangtong 1_5_4" width="48%">
+  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="420">
 </p>
-<p align="center">
-  <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="48%">
-  <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="48%">
-</p>
-<p align="center"><sub>上：大排 1_3_10 · 江铜 1_5_4　下：江铜 6_3_3 · 全景混剪节选</sub></p>
+<p align="center"><sub>2×2：大排 1_3_10 · 江铜 1_5_4 · 江铜 6_3_3 · 全景混剪节选 · 轻量预览</sub></p>
 
-全景混剪：[`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
+完整全景混剪：[`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 
 ### 成片清单（11 场 × 双倍速 × 双视角）
 
@@ -219,7 +211,7 @@ MineSim-MPC-AD-Control/
 │   ├── sas_*.py / stpp_*.py / executed_retiming*.py
 │   └── control_full_trace_*.py / ...
 ├── scripts/overlay_into_minesim.sh
-├── assets/                  # 提分曲线图 + 跟随/全景预览 gif
+├── assets/                  # 提分曲线图 + 跟随/全景 2×2 轻量预览 gif
 ├── TASK_AND_DATA.md         # 任务场景与规控数据集
 ├── METHOD.md / ARCHITECTURE.md / SCORES.md
 ├── MANIFEST.json / NOTICE / LICENSE

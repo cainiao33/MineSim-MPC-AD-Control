@@ -5,7 +5,7 @@
   <a href="README_en.md"><img src="https://img.shields.io/badge/Switch_Language-English-blue?style=for-the-badge" alt="English"></a>
 </p>
 
-> **Competition:** [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) — **planning / decision / control** (MineSim replay). Site: [aicompetition-pz.com](https://www.aicompetition-pz.com/) · Detail: [deepvision page](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532).
+> **Competition:** [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56) — **planning / decision / control** (MineSim replay). Site: [aicompetition-pz.com](https://www.aicompetition-pz.com/) · Problem page: [topic_detail/56](https://www.aicompetition-pz.com/topic_detail/56).
 >
 > **Overview:** A **strategy patch** for MineSim / mine_sim — scene-adaptive parameters, SAS closed-loop candidate search, STPP / trajectory retiming, and v63 full-trace SQP with goal-region refinement. Only contestant `devkit/` is changed; Env, maps, and scorer stay stock.
 >
@@ -24,7 +24,7 @@
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
-[![Pazhou Algorithm Competition](https://img.shields.io/badge/Pazhou-Intelligent_Driving-orange.svg)](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)
+[![Pazhou Algorithm Competition](https://img.shields.io/badge/Pazhou-Intelligent_Driving-orange.svg)](https://www.aicompetition-pz.com/topic_detail/56)
 [![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_patch-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
@@ -32,7 +32,7 @@
 
 ## 📖 Introduction
 
-Open-source **planning & control** code for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532). On MineSim replay, an interpretable rule stack with per-scene parameters raised scores to online **v58 ≈ 96.12** and local **v63 ≈ 97.1** (43 scenes).
+Open-source **planning & control** code for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56). On MineSim replay, an interpretable rule stack with per-scene parameters raised scores to online **v58 ≈ 96.12** and local **v63 ≈ 97.1** (43 scenes).
 
 Approach: **do not replace the simulator**. Env, maps, and the official scorer stay unchanged. Changes live in `planner` / `predictor` / `simple_control`, plus SAS, STPP, and full-trace SQP. The full 183-scene `scen_config.json` ships with the repo for per-scene path modes and control parameters.
 
@@ -53,9 +53,9 @@ Approach: **do not replace the simulator**. Env, maps, and the official scorer s
 
 | Item | Content |
 |------|------|
-| **Competition** | [Pazhou × Intelligent Driving](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **Competition** | [Pazhou × Intelligent Driving](https://www.aicompetition-pz.com/topic_detail/56) |
 | **Track** | Planning / decision / control (Preliminary B / Final B) |
-| **Links** | [Problem detail](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) · [Site](https://www.aicompetition-pz.com/) |
+| **Links** | [Problem detail](https://www.aicompetition-pz.com/topic_detail/56) · [Site](https://www.aicompetition-pz.com/) |
 
 | Metric | Value |
 |------|------|
@@ -80,7 +80,7 @@ Approach: **do not replace the simulator**. Env, maps, and the official scorer s
 
 | Item | Content |
 |------|------|
-| **Competition** | [Pazhou × Intelligent Driving](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| **Competition** | [Pazhou × Intelligent Driving](https://www.aicompetition-pz.com/topic_detail/56) |
 | **Task** | Output steering / throttle / brake from perception + pose / nav / dynamics at unsignalized intersections with dynamic interaction |
 | **Score** | Safety 50% + efficiency 30% + path completion 20% |
 | **Dataset (official)** | Pose, nav, dynamics, perception; unstructured unsignalized intersections; same schema prelim/finals, different distribution |
@@ -100,30 +100,23 @@ Two render views; same verified v63 trajectories (post-process does not change s
 | **Follow-cam** | Ego lock · smooth tracking · 1080² | [Release `v63-demo-videos`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos) (~144MB) |
 | **Wide / map** | 1500² panorama — map, agents, full route | [Release `v63-demo-videos-wide`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos-wide) (`wide_*`, ~55MB) |
 
-### Follow-cam previews
+### Follow-cam preview
 
 <p align="center">
-  <img src="assets/v63_follow_dapai_1_3_10_480.gif" alt="follow dapai 1_3_10" width="24%">
-  <img src="assets/v63_follow_dapai_3_2_2_480.gif" alt="follow dapai 3_2_2" width="24%">
-  <img src="assets/v63_follow_jiangtong_1_5_4_480.gif" alt="follow jiangtong 1_5_4" width="24%">
-  <img src="assets/v63_follow_jiangtong_6_3_3_480.gif" alt="follow jiangtong 6_3_3" width="24%">
+  <img src="assets/preview_follow_2x2.gif" alt="follow-cam 2x2 preview" width="420">
 </p>
+<p align="center"><sub>2×2: Dapai 1_3_10 · Dapai 3_2_2 · Jiangtong 1_5_4 · Jiangtong 6_3_3 (lightweight)</sub></p>
 
-Highlight reel: [`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
+Full highlight reel: [`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
 
-### Wide / map previews
+### Wide / map preview
 
 <p align="center">
-  <img src="assets/v63_wide_dapai_1_3_10_480.gif" alt="wide dapai 1_3_10" width="48%">
-  <img src="assets/v63_wide_jiangtong_1_5_4_480.gif" alt="wide jiangtong 1_5_4" width="48%">
+  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="420">
 </p>
-<p align="center">
-  <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="48%">
-  <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="48%">
-</p>
-<p align="center"><sub>Top: Dapai 1_3_10 · Jiangtong 1_5_4　Bottom: Jiangtong 6_3_3 · wide highlights clip</sub></p>
+<p align="center"><sub>2×2: Dapai 1_3_10 · Jiangtong 1_5_4 · Jiangtong 6_3_3 · wide highlights clip (lightweight)</sub></p>
 
-Wide highlights: [`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
+Full wide highlights: [`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 
 Per-scene 1x / 0.5x links for all 11 scenes are in the Chinese [README.md](README.md#成片清单11-场--双倍速--双视角).
 

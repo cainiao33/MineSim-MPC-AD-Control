@@ -1,6 +1,6 @@
 # Task Scenarios & Planning/Control Dataset
 
-> Source: official statement for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532), plus local inspection of the public `mine_sim` package. This repo does **not** redistribute official data.
+> Source: official statement for the [Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track](https://www.aicompetition-pz.com/topic_detail/56), plus local inspection of the public `mine_sim` package. This repo does **not** redistribute official data.
 
 ## 1. Task (planning / decision / control)
 
@@ -8,7 +8,7 @@ Given perception results, ego pose, navigation commands, and vehicle dynamics, o
 
 | Item | Detail |
 |------|------|
-| Competition | [Pazhou × Intelligent Driving](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| Competition | [Pazhou × Intelligent Driving](https://www.aicompetition-pz.com/topic_detail/56) |
 | Site | https://www.aicompetition-pz.com/ |
 | Track | Planning / decision / control (Preliminary B / Final B) |
 | Simulator | MineSim / mine_sim (replay; background agents follow reference trajectories) |

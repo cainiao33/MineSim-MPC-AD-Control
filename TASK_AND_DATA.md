@@ -1,6 +1,6 @@
 # 任务场景与规控数据集说明
 
-> 来源：[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) 官方说明，以及公开包 `mine_sim` 的本地核对。本仓**不**重分发官方数据。
+> 来源：[琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) 官方说明，以及公开包 `mine_sim` 的本地核对。本仓**不**重分发官方数据。
 
 ## 1. 赛题任务（决策规划控制）
 
@@ -8,7 +8,7 @@
 
 | 项 | 说明 |
 |------|------|
-| 赛事 | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
+| 赛事 | [琶洲算法大赛 × 智能驾驶生态赛](https://www.aicompetition-pz.com/topic_detail/56) |
 | 大赛官网 | https://www.aicompetition-pz.com/ |
 | 赛道 | 决策规划控制（初赛 B / 决赛 B） |
 | 仿真平台 | MineSim / mine_sim（回放仿真，背景车按参考轨迹行驶） |
