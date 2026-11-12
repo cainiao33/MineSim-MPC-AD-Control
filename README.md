@@ -105,9 +105,9 @@
 ### 跟随镜头预览
 
 <p align="center">
-  <img src="assets/preview_follow_2x2.gif" alt="follow-cam 2x2 preview" width="420">
+  <img src="assets/preview_follow_2x2.gif" alt="follow-cam 2x2 preview" width="720">
 </p>
-<p align="center"><sub>2×2：大排 1_3_10 · 大排 3_2_2 · 江铜 1_5_4 · 江铜 6_3_3（到达段）· 轻量预览</sub></p>
+<p align="center"><sub>2×2：大排 1_3_10 · 大排 3_2_2 · 江铜 1_5_4 · 江铜 6_3_3（到达段）</sub></p>
 
 完整混剪：[`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
 
