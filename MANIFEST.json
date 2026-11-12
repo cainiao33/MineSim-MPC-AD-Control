@@ -1,0 +1,370 @@
+{
+  "name": "MineSim-MPC-AD-Control",
+  "research_version": "v63",
+  "kind": "strategy_overlay",
+  "created_utc": "2026-11-12T11:34:43.692389+00:00",
+  "upstream_license": "AGPL-3.0",
+  "production_source_manifest_sha256": "d90ef61c09c28799cf9ede0db9de823a2eb4975599a1c05e4ec4f319622e5d7a",
+  "notes": [
+    "Overlay contains NEW+MOD files relative to stock mine_sim_V1.1_local/devkit.",
+    "planner.py / simple_control.py / sas_hook.py were path-scrubbed for portability; their sha256 differ from the frozen lab production tree.",
+    "Full scen_config.json with 183 scene modes is included.",
+    "Official inputs/, datasets/maps/, and Docker images are NOT redistributed."
+  ],
+  "scores": {
+    "online_v58_total_mean": 96.12136612021858,
+    "local_v63_public40": 97.572355,
+    "local_v63_known43": 97.09625813953488
+  },
+  "files": {
+    "bitmap_route.py": {
+      "sha256": "b4f1c10f1e02017f13fa08ecc429cebb72b2a835cc8ef096137a953ca7c1d779",
+      "bytes": 8617,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "bootstrap_route.py": {
+      "sha256": "9bdf1e02741159d86d98c9bb3a8db1c554b038c9b49f5c71347deb4a528aeb83",
+      "bytes": 8445,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "centerlines/centerlines_jiangxi_jiangtong_v2s.json": {
+      "sha256": "2dd0828f006764ba8a06b0c151d961fc87b0e99fd60db6bd4a296b85d9c14a34",
+      "bytes": 8518371,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_certified_reserve_cache.py": {
+      "sha256": "af01429500a746c3385244b3fe96101773cbe145a965863dc6643af649bd86fb",
+      "bytes": 3967,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_feasible_portal_turn.py": {
+      "sha256": "9eeb16edd3e42cfa4bde1e6ba755559eb48a4004792756a0f32854316bc9027e",
+      "bytes": 40252,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_goal_dispatch.py": {
+      "sha256": "e3e877337ac5b8763c219f6181afab66133ea1c20ef31e6c9eb5ef5a13fb736f",
+      "bytes": 5049,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_native_domain_backend.py": {
+      "sha256": "4d5f752e5c76ad49f2d5ffbfc011b6fa4abd536f893099315d9932c36158236c",
+      "bytes": 5951,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_native_domain_contract.py": {
+      "sha256": "94ed42df2607c17d9a967cfcc10c34b055f36620e41891c70031b23c07c46d67",
+      "bytes": 3384,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp.py": {
+      "sha256": "b42a0acf5c9a4e69007d1c0386b64e522969882175292703d5cc01651d676148",
+      "bytes": 41657,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_backend.py": {
+      "sha256": "be2b4420470b782f2bfe9f1afc0b45d2d3b69a758d9ed34d8f27bf986f6798d5",
+      "bytes": 11185,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_contract.py": {
+      "sha256": "9f898d381258fe98c516c3ae9cfa1ab4f6c0b554dc9b6f9b5478888c28f82383",
+      "bytes": 21407,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_segmented_gt.py": {
+      "sha256": "2ac63338bcf1610e6e6e8b90e7908b81f3f11230ecf618b8b367e08019162c07",
+      "bytes": 43266,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_segmented_gt_backend.py": {
+      "sha256": "ed35a890a671dbc3fa49c2e2bd760118f9554d7ae8217c6e25525d8ebb14a3a8",
+      "bytes": 3681,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_segmented_sqp_factorized.py": {
+      "sha256": "9abce7dfa927a7e5452e3ff706e033fd25154ccfe31ad8c48b2dd1c3b8d066ba",
+      "bytes": 24138,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_segmented_sqp_factorized_backend.py": {
+      "sha256": "a1061af24e97a14d1e7b84103414e6ca31fe7313df84c9b686d7f340324c5a8a",
+      "bytes": 4093,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_qp_signed_turn_backend.py": {
+      "sha256": "6b3b903c7f40701179cd73013e557d9858fb54dc167c07f05c32e61636a8011c",
+      "bytes": 793,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_full_trace_sqp_goal_error_compensation.py": {
+      "sha256": "61f94029c787caf41f1e7f509c837fa439292148a74c11c8d9ab2f7f79c848d8",
+      "bytes": 27683,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_geometry_executed_suffix.py": {
+      "sha256": "e54db50b9c37389878a6fce06675bcfee0d24c127b275236419302798aed200d",
+      "bytes": 5826,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_gt_separation_planes.py": {
+      "sha256": "815ef65998d629b3da412a228bd2997b91e97da174272ff65217af08c477e4c7",
+      "bytes": 3307,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_gt_work_meter.py": {
+      "sha256": "f95f25dced4ea16a20a906d60e4e58073e6ffc57090ba71c6d9a3f3cb99b40fb",
+      "bytes": 431,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_live_goal_polygon.py": {
+      "sha256": "85ee26de009289e63381dc7590e93df13d6ebc4a6566cc0608279c1abff0af0b",
+      "bytes": 4272,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_local_curvature_exit.py": {
+      "sha256": "0e5d6235b78d57ac7de5ad65003c06e24d31d5b34cfe404825b7594d03938037",
+      "bytes": 13632,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_native_bank_phase.py": {
+      "sha256": "8dfc140fc50c7bdd2f9a387192e396092a6bd9ecf714ff39d937ee58a6eb4d00",
+      "bytes": 38245,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_native_bank_phase_backend.py": {
+      "sha256": "15bd214e82084e5cac300a18d8215cd92e15632489cfde4b118e44edce2dc765",
+      "bytes": 15853,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_pose_time_corridor.py": {
+      "sha256": "29385bfa10dba1602c789739a970559a0ef63b2d0859240a669823ee2c5622eb",
+      "bytes": 38351,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_qp_segmented_box.py": {
+      "sha256": "f918d4d5e96c1b6c32d01d11c7b2b780175ee2cfed453fc6f8763fca236b5b4d",
+      "bytes": 5290,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_qp_segmented_dominance.py": {
+      "sha256": "2b5cba008f4efa1a280bc90e2862d442b21d4b81dbd5a870d483fafeab48a82a",
+      "bytes": 5867,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_qp_segmented_factorized_primal.py": {
+      "sha256": "bdd796a7a3e53c2dfd7d4a2ff03d1dc9fe4332786473a7eb353daca73192589a",
+      "bytes": 9698,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_qp_segmented_primal.py": {
+      "sha256": "71e64c8017094e2c2abb9e1ef0af7717d0d448589d26f73081931d5ec08f174f",
+      "bytes": 7446,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_segmented_work_meter.py": {
+      "sha256": "1cb7b8a73506f76ab1ef3a3fd19ffb0018e02824e7b35a1e406371641f58a111",
+      "bytes": 1900,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "control_sqp_work_meter.py": {
+      "sha256": "8766803fb20495a7e0e5c77dffc2d2f0cf75c61279f0c085d91b984c86d26595",
+      "bytes": 915,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "event_geometry.py": {
+      "sha256": "8621ec6337874d2262b4248f93a239999d926622b5a238b13bd02b7b3a7732ce",
+      "bytes": 9293,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "executed_braking_reachability.py": {
+      "sha256": "55b479cf60ce13159ec3829da25af97de5f0002664777b45cc61ed6a74d7cb4b",
+      "bytes": 20680,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "executed_retiming.py": {
+      "sha256": "338225f1b011b52546036ed4464bd7af4656b03e169c5f77f4311ba6dbce6c92",
+      "bytes": 8610,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "executed_retiming_ff.py": {
+      "sha256": "3a16ecba231f851cab00499c06601834d5048e644773099da516bae1f3410070",
+      "bytes": 2953,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "executed_retiming_full_ff.py": {
+      "sha256": "fa91f39c531936fd1ae9e69e1019bcf5578bec8d79a7261ce2b4996b2593b3fe",
+      "bytes": 2503,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "full_trace_checks.py": {
+      "sha256": "6ab086af6c999f65b3bf0038847d82682462f6bf53c960286e7231ff1fa47ae9",
+      "bytes": 7413,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "full_trace_execution.py": {
+      "sha256": "c73307b4a0e5a79db2a6156bbc5977e288245e598c5bbf63f2ae2ee2c5f573af",
+      "bytes": 12619,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "full_trace_sqp_trials.py": {
+      "sha256": "027a6ef1b1f13c09cd2ab50f2ec88311825bacb19f1fb7a9a8403c310fca2bab",
+      "bytes": 13510,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "geometry_proposals.py": {
+      "sha256": "9723d0f8ce986033a3f9158569825933764d7e05f3de781f4eae114c379abdde",
+      "bytes": 3398,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "goal_pose_geometry.py": {
+      "sha256": "4a2e069437c2cfb00c7a2a171ede680813a312f857c8bda4cf781c016b9b1504",
+      "bytes": 5069,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "local_exit_execution.py": {
+      "sha256": "5b289107a99fac2c19cc0775eafa1a411995e88ba394dc6b2122a34aae5d24c0",
+      "bytes": 6679,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "local_exit_trials.py": {
+      "sha256": "6b2a2a92ca954568b474d772fb5a358780e59a4ec9319cc393a56d603249b514",
+      "bytes": 15832,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "probe_control_pose_time_corridor.py": {
+      "sha256": "6a5471b839de85742dcd7b9fe5a68aba31e15bff49a16b1f8dc105d52bdea887",
+      "bytes": 1426,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "retiming_braking_trials.py": {
+      "sha256": "99cb1c345888880aded1cd3d5a072e1b6e8f335d7ab664f3ecea89a9eaf693ef",
+      "bytes": 8222,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "retiming_ff_trials.py": {
+      "sha256": "3ace8ac734b165cfb311850930438ff3b027815f4f70f69195a77f26fd0911a4",
+      "bytes": 7847,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "retiming_full_ff_trials.py": {
+      "sha256": "778b72d8dd6a0bb4240a5a4416a3258562e54d5b74fc0195bbc3acde0d344e86",
+      "bytes": 8915,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "sas_core.py": {
+      "sha256": "e1cefc21069d2c861e0c4a89532993877e907b72f09d59b6eceb1347e07a9b37",
+      "bytes": 75802,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "sas_hook.py": {
+      "sha256": "c9a9324d9442696a905a6e6fbcc355588b08f8c5836aac6660a1bbccee8c5983",
+      "bytes": 6244,
+      "kind": "new",
+      "path_scrubbed": true
+    },
+    "score_embed.py": {
+      "sha256": "e7b8b417c079803f1526627f1a30b97dbdba426b36047d6634eae302ea582ebf",
+      "bytes": 9493,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "stpp_geometry.py": {
+      "sha256": "6ffaa95efe9572b00612470a5c6c3ea5aa7cdfdaad8884b754475baeed1e3cfc",
+      "bytes": 13878,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "stpp_hook.py": {
+      "sha256": "2f2461930aefc4775162c038a4f7a2f784cccdc69e755baafda600afdd1cc377",
+      "bytes": 24195,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "stpp_retiming_trials.py": {
+      "sha256": "230103da619915a1b03f47cb83f56c76fd27156ed9ea0d2e7f95418aace00231",
+      "bytes": 11377,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "trajectory_candidates.py": {
+      "sha256": "1ddd6d36e7f893f4ca8247165d80ee02e8fc57674a921dd4a48fe5df72b20ef4",
+      "bytes": 6788,
+      "kind": "new",
+      "path_scrubbed": false
+    },
+    "centerlines/scen_config.json": {
+      "sha256": "5741ab3b0db8c03861e4600131c09816edb6605ee05d3ad80e4d309acf2fcef5",
+      "bytes": 20238,
+      "kind": "mod",
+      "path_scrubbed": false
+    },
+    "planner.py": {
+      "sha256": "689dbdcf63aedbf84f83463cdf1135fe889e21e0634fd1f4fe2df0ffea4767ff",
+      "bytes": 21379,
+      "kind": "mod",
+      "path_scrubbed": true
+    },
+    "predictor.py": {
+      "sha256": "f64c5a678b606502e0ed27ac51d4ffe0456d672d25f353d61833ce9264ca129d",
+      "bytes": 30881,
+      "kind": "mod",
+      "path_scrubbed": false
+    },
+    "simple_control.py": {
+      "sha256": "f9dbc1dd7b91565ca68707106f4cb0ba5f5e22716d2bfbf491587bedae0c8ee8",
+      "bytes": 52166,
+      "kind": "mod",
+      "path_scrubbed": true
+    }
+  },
+  "file_count": 58
+}

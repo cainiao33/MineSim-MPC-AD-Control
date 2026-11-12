@@ -1,0 +1,740 @@
+{
+  "modes": {
+    "dapai_intersection_1_3_10": "base",
+    "dapai_intersection_1_3_11": "base",
+    "dapai_intersection_1_3_12": "base",
+    "dapai_intersection_1_3_13": "base",
+    "dapai_intersection_1_3_14": "base",
+    "dapai_intersection_1_3_15": "base",
+    "dapai_intersection_2_3_4": "center",
+    "dapai_intersection_2_3_5": "center",
+    "dapai_intersection_2_3_6": "center",
+    "dapai_intersection_3_2_1": "center",
+    "dapai_intersection_3_2_2": "center",
+    "jiangtong_intersection_1_4_4": "base",
+    "jiangtong_intersection_1_5_1": "base",
+    "jiangtong_intersection_1_5_2": "base",
+    "jiangtong_intersection_1_5_3": "base",
+    "jiangtong_intersection_1_5_4": "base",
+    "jiangtong_intersection_1_5_5": "base",
+    "jiangtong_intersection_5_2_1": "base",
+    "jiangtong_intersection_5_2_2": "base",
+    "jiangtong_intersection_5_2_3": "base",
+    "jiangtong_intersection_5_2_4": "hybrid",
+    "jiangtong_intersection_5_3_1": "hybrid",
+    "jiangtong_intersection_5_3_2": "base",
+    "jiangtong_intersection_5_3_3": "base",
+    "jiangtong_intersection_5_3_4": "base",
+    "jiangtong_intersection_5_3_5": "base",
+    "jiangtong_intersection_5_4_1": "hybrid",
+    "jiangtong_intersection_5_4_2": "base",
+    "jiangtong_intersection_5_4_3": "hybrid",
+    "jiangtong_intersection_5_4_4": "base",
+    "jiangtong_intersection_6_2_5": "hybrid",
+    "jiangtong_intersection_6_3_1": "center",
+    "jiangtong_intersection_6_3_2": "hybrid",
+    "jiangtong_intersection_6_3_3": "center",
+    "jiangtong_intersection_6_3_4": "hybrid",
+    "jiangtong_intersection_9_3_1": "base",
+    "jiangtong_intersection_9_3_2": "hybrid",
+    "jiangtong_intersection_9_3_3": "hybrid",
+    "jiangtong_intersection_9_3_4": "center",
+    "jiangtong_intersection_9_3_5": "hybrid",
+    "dapai_intersection_1_2_1": "center",
+    "dapai_intersection_1_2_10": "center",
+    "dapai_intersection_1_2_11": "center",
+    "dapai_intersection_1_2_12": "center",
+    "dapai_intersection_1_2_13": "center",
+    "dapai_intersection_1_2_14": "center",
+    "dapai_intersection_1_2_15": "center",
+    "dapai_intersection_1_2_16": "center",
+    "dapai_intersection_1_2_17": "center",
+    "dapai_intersection_1_2_18": "center",
+    "dapai_intersection_1_2_19": "center",
+    "dapai_intersection_1_2_2": "center",
+    "dapai_intersection_1_2_20": "center",
+    "dapai_intersection_1_2_3": "center",
+    "dapai_intersection_1_2_4": "center",
+    "dapai_intersection_1_2_5": "center",
+    "dapai_intersection_1_2_6": "center",
+    "dapai_intersection_1_2_7": "center",
+    "dapai_intersection_1_2_8": "center",
+    "dapai_intersection_1_2_9": "center",
+    "dapai_intersection_1_3_1": "center",
+    "dapai_intersection_1_3_16": "center",
+    "dapai_intersection_1_3_17": "center",
+    "dapai_intersection_1_3_18": "center",
+    "dapai_intersection_1_3_19": "center",
+    "dapai_intersection_1_3_20": "center",
+    "dapai_intersection_1_3_2": "center",
+    "dapai_intersection_1_3_3": "center",
+    "dapai_intersection_1_3_4": "center",
+    "dapai_intersection_1_3_5": "center",
+    "dapai_intersection_1_3_6": "center",
+    "dapai_intersection_1_3_7": "center",
+    "dapai_intersection_1_3_8": "center",
+    "dapai_intersection_1_3_9": "center",
+    "dapai_intersection_1_4_1": "center",
+    "dapai_intersection_1_4_10": "center",
+    "dapai_intersection_1_4_11": "center",
+    "dapai_intersection_1_4_12": "center",
+    "dapai_intersection_1_4_2": "center",
+    "dapai_intersection_1_4_3": "center",
+    "dapai_intersection_1_4_4": "center",
+    "dapai_intersection_1_4_5": "center",
+    "dapai_intersection_1_4_6": "center",
+    "dapai_intersection_1_4_7": "center",
+    "dapai_intersection_1_4_8": "center",
+    "dapai_intersection_1_4_9": "center",
+    "dapai_intersection_2_2_1": "center",
+    "dapai_intersection_2_2_2": "center",
+    "dapai_intersection_2_2_3": "center",
+    "dapai_intersection_2_2_4": "center",
+    "dapai_intersection_2_2_5": "center",
+    "dapai_intersection_2_3_1": "center",
+    "dapai_intersection_2_3_2": "center",
+    "dapai_intersection_2_3_3": "center",
+    "dapai_intersection_3_2_3": "center",
+    "dapai_intersection_3_2_4": "hybrid",
+    "dapai_intersection_3_3_1": "hybrid",
+    "dapai_intersection_3_3_2": "center",
+    "dapai_intersection_3_3_3": "center",
+    "dapai_intersection_3_3_4": "hybrid",
+    "dapai_intersection_7_2_1": "center",
+    "dapai_intersection_7_2_11": "center",
+    "dapai_intersection_7_2_12": "center",
+    "dapai_intersection_7_2_13": "center",
+    "dapai_intersection_7_2_2": "center",
+    "dapai_intersection_7_2_3": "center",
+    "dapai_intersection_7_3_14": "center",
+    "dapai_intersection_7_3_15": "center",
+    "dapai_intersection_7_3_4": "center",
+    "dapai_intersection_7_3_5": "center",
+    "dapai_intersection_7_3_6": "center",
+    "dapai_intersection_7_3_7": "center",
+    "dapai_intersection_7_4_10": "center",
+    "dapai_intersection_7_4_16": "center",
+    "dapai_intersection_7_4_8": "center",
+    "dapai_intersection_7_4_9": "center",
+    "dapai_intersection_8_2_1": "base",
+    "dapai_intersection_8_2_11": "center",
+    "dapai_intersection_8_2_12": "center",
+    "dapai_intersection_8_2_2": "center",
+    "dapai_intersection_8_2_3": "base",
+    "dapai_intersection_8_3_10": "center",
+    "dapai_intersection_8_3_4": "center",
+    "dapai_intersection_8_3_5": "center",
+    "dapai_intersection_8_3_6": "center",
+    "dapai_intersection_8_4_7": "center",
+    "dapai_intersection_8_4_8": "base",
+    "dapai_intersection_8_4_9": "base",
+    "jiangtong_intersection_1_2_1": "base",
+    "jiangtong_intersection_1_2_10": "center",
+    "jiangtong_intersection_1_2_2": "center",
+    "jiangtong_intersection_1_2_3": "base",
+    "jiangtong_intersection_1_2_4": "base",
+    "jiangtong_intersection_1_2_5": "base",
+    "jiangtong_intersection_1_2_6": "base",
+    "jiangtong_intersection_1_2_7": "base",
+    "jiangtong_intersection_1_2_8": "center",
+    "jiangtong_intersection_1_2_9": "center",
+    "jiangtong_intersection_1_3_1": "center",
+    "jiangtong_intersection_1_3_10": "center",
+    "jiangtong_intersection_1_3_11": "center",
+    "jiangtong_intersection_1_3_12": "center",
+    "jiangtong_intersection_1_3_2": "hybrid",
+    "jiangtong_intersection_1_3_3": "center",
+    "jiangtong_intersection_1_3_4": "center",
+    "jiangtong_intersection_1_3_5": "center",
+    "jiangtong_intersection_1_3_6": "center",
+    "jiangtong_intersection_1_3_7": "center",
+    "jiangtong_intersection_1_3_8": "center",
+    "jiangtong_intersection_1_3_9": "center",
+    "jiangtong_intersection_1_4_1": "center",
+    "jiangtong_intersection_1_4_2": "base",
+    "jiangtong_intersection_1_4_3": "center",
+    "jiangtong_intersection_5_4_5": "center",
+    "jiangtong_intersection_5_5_1": "base",
+    "jiangtong_intersection_5_5_2": "center",
+    "jiangtong_intersection_5_5_3": "center",
+    "jiangtong_intersection_6_2_1": "center",
+    "jiangtong_intersection_6_2_2": "base",
+    "jiangtong_intersection_6_2_3": "center",
+    "jiangtong_intersection_6_2_4": "center",
+    "jiangtong_intersection_6_3_5": "center",
+    "jiangtong_intersection_6_3_6": "base",
+    "jiangtong_intersection_6_4_1": "center",
+    "jiangtong_intersection_6_4_3": "center",
+    "jiangtong_intersection_7_2_1": "center",
+    "jiangtong_intersection_7_2_2": "center",
+    "jiangtong_intersection_7_2_3": "center",
+    "jiangtong_intersection_7_2_4": "center",
+    "jiangtong_intersection_7_2_5": "center",
+    "jiangtong_intersection_7_3_1": "center",
+    "jiangtong_intersection_7_3_3": "center",
+    "jiangtong_intersection_7_3_4": "center",
+    "jiangtong_intersection_7_4_1": "center",
+    "jiangtong_intersection_7_4_3": "hybrid",
+    "jiangtong_intersection_8_2_1": "center",
+    "jiangtong_intersection_9_2_1": "center",
+    "jiangtong_intersection_9_2_2": "center",
+    "jiangtong_intersection_9_2_4": "center",
+    "jiangtong_intersection_9_3_6": "center",
+    "jiangtong_intersection_9_4_2": "center",
+    "jiangtong_intersection_9_4_3": "center",
+    "jiangtong_intersection_9_4_4": "center"
+  },
+  "vprof_scenes": [
+    "jiangtong_intersection_9_3_5",
+    "jiangtong_intersection_6_3_3"
+  ],
+  "default": "center",
+  "note": "10-02 A1=v33 + no-op豁免{2_3_4,5_4_3}（B1/B2 stpp 实测双负撤键）",
+  "vel0": {
+    "dapai_intersection_7_2_11": 11.0,
+    "dapai_intersection_7_3_7": 10.26,
+    "dapai_intersection_1_3_17": 11.0,
+    "dapai_intersection_1_2_15": 10.74,
+    "dapai_intersection_1_2_17": 11.0,
+    "dapai_intersection_7_2_1": 11.0,
+    "dapai_intersection_7_3_14": 11.0,
+    "jiangtong_intersection_6_3_5": 12.0,
+    "dapai_intersection_1_3_16": 11.0,
+    "dapai_intersection_7_3_4": 11.0,
+    "dapai_intersection_7_3_5": 11.0,
+    "dapai_intersection_1_2_19": 9.54,
+    "jiangtong_intersection_7_3_4": 9.27,
+    "dapai_intersection_3_2_3": 12.0,
+    "dapai_intersection_3_2_4": 12.0,
+    "dapai_intersection_3_3_1": 12.0,
+    "jiangtong_intersection_6_2_1": 12.0,
+    "jiangtong_intersection_6_2_3": 12.0,
+    "dapai_intersection_1_3_15": 12.0,
+    "dapai_intersection_2_3_4": 12.0,
+    "dapai_intersection_3_2_1": 12.0,
+    "jiangtong_intersection_5_3_2": 12.0,
+    "jiangtong_intersection_6_2_5": 12.0,
+    "jiangtong_intersection_6_3_1": 12.0,
+    "jiangtong_intersection_6_3_2": 12.0,
+    "jiangtong_intersection_6_3_4": 12.0,
+    "dapai_intersection_2_3_5": 8.5,
+    "dapai_intersection_2_3_6": 9.0,
+    "jiangtong_intersection_9_3_1": 8.5,
+    "dapai_intersection_8_4_9": 12.0,
+    "dapai_intersection_8_2_1": 12.0,
+    "dapai_intersection_8_4_8": 12.0,
+    "dapai_intersection_8_2_3": 12.0,
+    "dapai_intersection_3_3_2": 12.0,
+    "dapai_intersection_1_3_10": 7.6,
+    "dapai_intersection_1_3_13": 11.75
+  },
+  "idm_scenes": {
+    "jiangtong_intersection_1_5_4": {
+      "a_max": 1.0
+    },
+    "dapai_intersection_3_2_3": {
+      "t": 2.0,
+      "s0": 15.0,
+      "a_max": 3.5
+    },
+    "dapai_intersection_3_2_4": {
+      "a_max": 3.5
+    },
+    "dapai_intersection_3_3_1": {
+      "a_max": 3.5
+    },
+    "dapai_intersection_1_3_15": {
+      "t": 1.0,
+      "s0": 5.0
+    },
+    "dapai_intersection_3_2_2": {
+      "t": 3.5,
+      "s0": 25.0,
+      "a_max": 3.5,
+      "b": 0.5
+    },
+    "jiangtong_intersection_6_2_5": {
+      "t": 3.5,
+      "s0": 25.0,
+      "a_max": 3.5,
+      "b": 1.0
+    },
+    "dapai_intersection_1_3_11": {
+      "t": 2.0,
+      "s0": 20
+    },
+    "jiangtong_intersection_9_3_1": {
+      "t": 3.5,
+      "s0": 15
+    },
+    "dapai_intersection_1_3_10": {
+      "t": 2.75,
+      "s0": 15
+    },
+    "jiangtong_intersection_6_2_3": {
+      "t": 2.0,
+      "s0": 15
+    },
+    "jiangtong_intersection_5_2_3": {
+      "t": 1.5,
+      "s0": 10.0
+    },
+    "jiangtong_intersection_5_3_5": {
+      "t": 1.5,
+      "s0": 10.0
+    },
+    "jiangtong_intersection_5_3_2": {
+      "t": 1.5,
+      "s0": 10.0
+    },
+    "jiangtong_intersection_5_2_4": {
+      "t": 1.5,
+      "s0": 15.0
+    },
+    "dapai_intersection_2_3_5": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_2_3_6": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "jiangtong_intersection_9_3_5": {
+      "b": 3.0
+    },
+    "jiangtong_intersection_6_3_2": {
+      "b": 0.5
+    },
+    "jiangtong_intersection_6_3_4": {
+      "b": 0.5
+    },
+    "jiangtong_intersection_6_4_1": {
+      "t": 2.0,
+      "s0": 15.0
+    },
+    "dapai_intersection_8_2_11": {
+      "t": 2.0,
+      "s0": 15.0
+    },
+    "dapai_intersection_1_3_19": {
+      "t": 2.0,
+      "s0": 15.0
+    },
+    "dapai_intersection_1_3_16": {
+      "t": 2.0,
+      "s0": 15.0
+    },
+    "dapai_intersection_1_2_20": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_7_2_1": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_1_2_18": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_1_3_17": {
+      "t": 2.0,
+      "s0": 15.0
+    },
+    "jiangtong_intersection_7_2_3": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_7_3_14": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "jiangtong_intersection_7_3_4": {
+      "t": 2.75,
+      "s0": 15.0
+    },
+    "dapai_intersection_8_4_9": {
+      "t": 2.75,
+      "s0": 15.0
+    }
+  },
+  "yield_scenes": {
+    "jiangtong_intersection_6_2_2": {
+      "t_hold": 99.0
+    },
+    "jiangtong_intersection_6_3_6": {
+      "t_hold": 99.0
+    }
+  },
+  "alat_scenes": {
+    "jiangtong_intersection_9_3_4": {
+      "a_lat": 0.55,
+      "v_floor": 4.5
+    },
+    "jiangtong_intersection_9_3_3": {
+      "a_lat": 0.4,
+      "v_floor": 4.0
+    },
+    "jiangtong_intersection_9_3_2": {
+      "a_lat": 0.4,
+      "v_floor": 4.0
+    },
+    "jiangtong_intersection_5_2_4": {
+      "a_lat": 0.4,
+      "v_floor": 4.0
+    },
+    "dapai_intersection_7_2_12": {
+      "a_lat": 0.6,
+      "v_floor": 5.0
+    },
+    "dapai_intersection_7_4_16": {
+      "a_lat": 0.6,
+      "v_floor": 5.0
+    },
+    "dapai_intersection_7_4_9": {
+      "a_lat": 0.6,
+      "v_floor": 5.0
+    },
+    "dapai_intersection_7_4_8": {
+      "a_lat": 0.6,
+      "v_floor": 5.0
+    },
+    "jiangtong_intersection_9_4_4": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_9_4_2": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_1_3_4": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_5": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_8": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_9_2_4": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_9_3_6": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_1": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_12": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_7": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_2_8": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_4_3": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_2": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_3": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_3_6": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_2_3_6": {
+      "a_lat": 0.65,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_3_2_1": {
+      "a_lat": 0.38,
+      "v_floor": 4.0
+    },
+    "dapai_intersection_2_3_5": {
+      "a_lat": 0.65,
+      "v_floor": 7.0
+    },
+    "dapai_intersection_1_3_5": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_1_3_3": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_2_2": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_2_9": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_2_10": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_1_4_1": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_1_2_12": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_2_2_4": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_1_3_7": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "jiangtong_intersection_7_2_1": {
+      "a_lat": 0.6,
+      "v_floor": 5.0
+    },
+    "jiangtong_intersection_8_2_1": {
+      "a_lat": 0.6,
+      "v_floor": 6.0
+    },
+    "dapai_intersection_1_2_9": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_3_19": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_3_2": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_3_6": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_4_2": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_4_4": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_4_8": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_1_3_11": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_5_4_5": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_3_4": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_5_4_3": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_9_2_1": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_7_2_5": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_7_2_11": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_2_1": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_2_3": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_3_1": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_2_2": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_3_2": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_3_3": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "jiangtong_intersection_7_3_3": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_2_19": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_2_2_5": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_7_2_3": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    },
+    "dapai_intersection_1_2_10": {
+      "a_lat": 99,
+      "v_floor": 0.5
+    }
+  },
+  "rot_scenes": {
+    "jiangtong_intersection_9_3_2": {
+      "a_rot": 0.38
+    },
+    "jiangtong_intersection_9_3_3": {
+      "a_rot": 0.38
+    },
+    "jiangtong_intersection_9_3_4": {
+      "a_rot": 0.26
+    },
+    "dapai_intersection_1_3_12": {
+      "a_rot": 0.38
+    },
+    "dapai_intersection_1_3_13": {
+      "a_rot": 0.38
+    },
+    "jiangtong_intersection_9_3_5": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_5_4_3": {
+      "a_rot": 0.38
+    },
+    "dapai_intersection_1_3_14": {
+      "a_rot": 0.34
+    },
+    "jiangtong_intersection_5_3_2": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_5_3_1": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_5_2_4": {
+      "a_rot": 0.38
+    },
+    "jiangtong_intersection_5_2_3": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_5_3_5": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_1_5_4": {
+      "a_rot": 0.3
+    },
+    "jiangtong_intersection_1_5_5": {
+      "a_rot": 0.32
+    },
+    "jiangtong_intersection_9_3_1": {
+      "a_rot": 0.38
+    },
+    "dapai_intersection_2_3_5": {
+      "a_rot": 0.38
+    },
+    "dapai_intersection_2_3_6": {
+      "a_rot": 0.38
+    }
+  },
+  "look_scenes": {
+    "jiangtong_intersection_9_3_1": {
+      "ld_off": -3.0
+    },
+    "dapai_intersection_2_3_4": {
+      "ld_off": 3.0
+    },
+    "dapai_intersection_2_3_5": {
+      "ld_off": 3.0
+    },
+    "dapai_intersection_2_3_6": {
+      "ld_off": 6.0
+    },
+    "dapai_intersection_1_3_10": {
+      "ld_off": 0.0
+    },
+    "jiangtong_intersection_6_2_5": {
+      "ld_off": -3.0
+    },
+    "jiangtong_intersection_6_3_2": {
+      "ld_off": -3.0
+    },
+    "jiangtong_intersection_6_3_4": {
+      "ld_off": -3.0
+    },
+    "dapai_intersection_1_3_13": {
+      "ld_off": 4.5
+    },
+    "dapai_intersection_7_2_13": {
+      "ld_off": 3.0
+    },
+    "dapai_intersection_7_2_2": {
+      "ld_off": 3.0
+    },
+    "dapai_intersection_8_4_9": {
+      "ld_off": 7.0
+    }
+  },
+  "stpp_scenes": {
+    "dapai_intersection_3_2_1": {},
+    "dapai_intersection_2_3_6": {}
+  },
+  "table_scenes": {
+    "jiangtong_intersection_6_2_1": "v2s",
+    "jiangtong_intersection_6_2_3": "v2s",
+    "jiangtong_intersection_6_3_2": "v2s",
+    "jiangtong_intersection_6_3_4": "v2s",
+    "jiangtong_intersection_6_3_5": "v2s"
+  },
+  "sas": {
+    "enabled": true,
+    "execution_profile": true,
+    "trajectory_tracking": true,
+    "hairpin_geometry": true,
+    "bezier_geometry": true,
+    "goal_pose_geometry": true,
+    "event_geometry": true,
+    "stpp_geometry": true,
+    "bootstrap_route": true,
+    "executed_retiming_ff": true,
+    "full_ff_enabled": true,
+    "braking_reachability_enabled": true,
+    "local_exit_enabled": true,
+    "stpp_retiming_enabled": true,
+    "full_trace_sqp_enabled": true
+  }
+}

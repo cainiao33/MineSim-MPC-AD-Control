@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local experiment outputs (never ship)
+outputs/
+*.tar
+*.tar.gz
+
+# Staging helper (not part of public tree)
+_inventory.json
