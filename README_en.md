@@ -112,9 +112,9 @@ Full highlight reel: [`v63_highlights_1080.mp4`](https://github.com/cainiao33/Mi
 ### Wide / map preview
 
 <p align="center">
-  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="420">
+  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="720">
 </p>
-<p align="center"><sub>2×2: Dapai 1_3_10 · Jiangtong 1_5_4 · Jiangtong 6_3_3 · wide highlights clip (lightweight)</sub></p>
+<p align="center"><sub>2×2: Dapai 1_3_10 · Jiangtong 1_5_4 · Jiangtong 6_3_3 · wide highlights clip</sub></p>
 
 Full wide highlights: [`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 

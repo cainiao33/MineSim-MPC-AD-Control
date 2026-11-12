@@ -114,9 +114,9 @@
 ### 全景 / 地图视角预览
 
 <p align="center">
-  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="420">
+  <img src="assets/preview_wide_2x2.gif" alt="wide/map 2x2 preview" width="720">
 </p>
-<p align="center"><sub>2×2：大排 1_3_10 · 江铜 1_5_4 · 江铜 6_3_3 · 全景混剪节选 · 轻量预览</sub></p>
+<p align="center"><sub>2×2：大排 1_3_10 · 江铜 1_5_4 · 江铜 6_3_3 · 全景混剪节选</sub></p>
 
 完整全景混剪：[`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 
