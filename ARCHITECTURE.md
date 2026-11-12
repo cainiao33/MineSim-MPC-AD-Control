@@ -1,25 +1,25 @@
-# Architecture
+# 架构说明
 
-## Runtime loop (official mine_sim)
+## 运行回路（官方 mine_sim）
 
 ```
 observation
   → Predictor.predict
   → MotionController / simple_control.process
-  → action (acc, steering)
+  → action（加速度、转向）
 ```
 
-This overlay replaces/extends the contestant-facing `devkit` pieces while leaving the Env, maps, and scorer to the official tree.
+本仓只替换 / 扩展选手侧 `devkit`；环境、地图与评分器仍使用官方树。
 
-## Overlay map
+## 补丁目录
 
 ```
 overlay/devkit/
-  planner.py              # path modes + centerline / v2s table selection
-  predictor.py            # prediction + SAS stash hooks
-  simple_control.py       # tracking, IDM/alat/rot/look/yield, SAS/STPP entry
+  planner.py              # 路径模式 + 中线 / 局部修正表选择
+  predictor.py            # 预测 + SAS 钩子
+  simple_control.py       # 跟踪、IDM / 侧向加速度 / 转角 / 预瞄 / 让行，以及 SAS、STPP 入口
   centerlines/
-    scen_config.json      # 183-scene adaptive bank (full)
+    scen_config.json      # 183 场场景参数表（完整）
     centerlines_jiangxi_jiangtong_v2s.json
   sas_core.py / sas_hook.py
   stpp_*.py / executed_retiming*.py
@@ -27,35 +27,35 @@ overlay/devkit/
   bitmap_route.py / bootstrap_route.py / geometry_*.py / ...
 ```
 
-Stock centerline tables (`centerlines_guangdong_dapai.json`, `centerlines_jiangxi_jiangtong.json`) remain those shipped with official mine_sim; only the **v2s** table and `scen_config.json` are overlaid.
+官方自带的中线表（`centerlines_guangdong_dapai.json`、`centerlines_jiangxi_jiangtong.json`）仍使用官方包中的版本；本仓只覆盖 **v2s 局部修正表** 与 `scen_config.json`。
 
-## Module groups
+## 模块分组
 
-| Group | Files (representative) | Job |
+| 分组 | 代表文件 | 作用 |
 |---|---|---|
-| Path bank | `planner.py`, `centerlines/*`, `bitmap_route.py`, `bootstrap_route.py` | Scene mode + corridor geometry |
-| Tracking bank | `simple_control.py`, `predictor.py` | Speed/safety scene keys + control |
-| SAS | `sas_hook.py`, `sas_core.py`, `score_embed.py` | Closed-loop candidate search |
-| STPP / retiming | `stpp_hook.py`, `stpp_geometry.py`, `executed_retiming*.py` | Executed-geometry timing |
-| Full-trace SQP | `control_full_trace_*.py`, `full_trace_*.py`, `control_live_goal_polygon.py` | v63 goal-aware refinement |
-| Trials / meters | `*_trials.py`, `*_work_meter.py` | Search budgets and admission |
+| 路径 | `planner.py`、`centerlines/*`、`bitmap_route.py`、`bootstrap_route.py` | 场景模式与走廊几何 |
+| 跟踪控制 | `simple_control.py`、`predictor.py` | 速度 / 安全场景参数与控制 |
+| SAS | `sas_hook.py`、`sas_core.py`、`score_embed.py` | 闭环候选搜索 |
+| STPP / 重定时 | `stpp_hook.py`、`stpp_geometry.py`、`executed_retiming*.py` | 执行几何与时序调整 |
+| 全轨迹 SQP | `control_full_trace_*.py`、`full_trace_*.py`、`control_live_goal_polygon.py` | v63 目标区域精修 |
+| 试验与计量 | `*_trials.py`、`*_work_meter.py` | 搜索预算与准入 |
 
-## Config discovery (portable)
+## 配置查找顺序（可移植）
 
-After open-source path scrubbing, config search order is roughly:
+开源版已去掉本机绝对路径，大致顺序为：
 
-1. `MINE_CFG` / `MINE_SCEN_CONFIG` (explicit file)
-2. `devkit/centerlines/scen_config.json` (next to the code)
-3. `./outputs/scen_config.json` (CWD fallback)
+1. `MINE_CFG` / `MINE_SCEN_CONFIG`（显式文件）
+2. `devkit/centerlines/scen_config.json`（与代码同目录）
+3. `./outputs/scen_config.json`（当前工作目录回退）
 
-Centerlines: `MINE_CENTERLINE_DIR` → `devkit/centerlines/` → `./outputs/`.
+中线表：`MINE_CENTERLINE_DIR` → `devkit/centerlines/` → `./outputs/`。
 
-Optional expected times: `MINE_EXPECTED_JSON` → `<mine_sim>/inputs/expected_times.json`.
+可选期望耗时：`MINE_EXPECTED_JSON` → `<mine_sim>/inputs/expected_times.json`。
 
-## Install shape
+## 安装方式
 
 ```bash
 bash scripts/overlay_into_minesim.sh /path/to/official_mine_sim
 ```
 
-Copies only NEW+MOD files into `devkit/`, backs up overwritten stock files once under `.mpc_ad_overlay_backup/`.
+仅将新增与修改文件复制到 `devkit/`，并在首次覆盖时备份原文件到 `.mpc_ad_overlay_backup/`。

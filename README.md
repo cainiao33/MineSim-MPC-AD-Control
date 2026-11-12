@@ -7,11 +7,11 @@
 
 > **赛题**：[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) — **决策规划控制**任务（MineSim 回放仿真）。大赛官网：[aicompetition-pz.com](https://www.aicompetition-pz.com/) · 赛题详情页：[deepvision 平台](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)。
 >
-> **概述**：面向 MineSim / mine_sim 回放仿真的**策略叠加层**——场景自适应配置银行 + SAS 同码闭环候选 + STPP/重定时前馈 + v63 全轨迹 SQP / 目标多边形派发。覆盖官方 `devkit/`，不改 Env / 地图 / 评分器。
+> **概述**：面向 MineSim / mine_sim 的**规控策略补丁**——按场景自适应的参数配置、SAS 闭环候选搜索、STPP / 轨迹重定时，以及 v63 全轨迹 SQP 与目标区域精修。只改选手侧 `devkit/`，不改仿真环境、地图与评分器。
 >
-> **成绩**：线上可绑定包 **v58 ≈ 96.12**（183 场均分 96.121366…）· 本地完整最佳 **v63** 公开 40 ≈ **97.57** / 已知 43 ≈ **97.10**（零车撞、零压界；**非**线上认证包）。
+> **成绩**：线上版本 **v58 ≈ 96.12**（183 场均分 96.121366…）· 本地最佳 **v63** 公开 40 场 ≈ **97.57** / 本地 43 场 ≈ **97.10**（零碰撞、零压界；v63 **未**作为线上提交版本）。
 >
-> **怎么跑**：须自备官方 mine_sim（含 `inputs/` 与地图）。本仓只发策略文件；一键覆盖后即可跑公开场景：
+> **怎么跑**：自行准备官方 mine_sim（含 `inputs/` 与地图）。本仓只提供策略代码；覆盖安装后即可跑公开场景：
 >
 > ```bash
 > git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
@@ -25,27 +25,27 @@
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 [![琶洲算法大赛](https://img.shields.io/badge/琶洲算法大赛-智能驾驶生态赛-orange.svg)](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)
-[![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_overlay-green.svg)](NOTICE)
+[![MineSim Overlay](https://img.shields.io/badge/MineSim-strategy_patch-green.svg)](NOTICE)
 [![Online v58](https://img.shields.io/badge/online_v58-96.12-brightgreen.svg)](SCORES.md)
 
 ---
 
 ## 📖 项目简介
 
-本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)** 中**决策规划控制**赛道方案的开源切片：在命题方 MineSim 回放基准上，用可解释的规则栈与实证银行把公开集与线上分从早期基线抬到 **v58 ≈ 96.12**（线上）/ **v63 ≈ 97.1**（本地已知 43）。
+本项目是 **[琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532)** **决策规划控制**赛道方案的开源代码：在 MineSim 回放仿真上，用可解释的规则方法与按场景管理的参数配置，将成绩从早期基线提升到线上 **v58 ≈ 96.12**、本地 **v63 ≈ 97.1**（43 场）。
 
-技术路线：**不替换仿真器本体**——Env、地图、官方评分脚本保持原样；选手侧只改 `planner` / `predictor` / `simple_control`，并叠加 SAS、STPP、全轨迹 SQP 等模块。完整 183 场 `scen_config.json` 随仓发布，作为「场景自适应策略选择」方法的一部分。
+技术路线：**不替换仿真器**。环境、地图、官方评分脚本保持原样；只修改 `planner` / `predictor` / `simple_control`，并加入 SAS、STPP、全轨迹 SQP 等模块。仓库附带完整 183 场 `scen_config.json`，用于按场景名选择路径模式与控制参数。
 
-### 本项目的改动（相对官方 mine_sim `devkit/`）
+### 相对官方 `devkit/` 的主要改动
 
-- **🗺 路径层银行**：逐场 `modes`（base / center / hybrid）+ 离线中线表 + `centerlines_*_v2s.json` 外科表
-- **⏱ 速度 / 跟车层**：`vel0` / `vprof` / IDM / yield 等场景键；单变量 A/B，赢家入库、输家回退
-- **🛡 安全跟踪层**：`alat` / `rot` / look 等封顶与预瞄；与评分侧加速度、转角约束对齐
-- **🔁 SAS v2**：同码闭环候选 rollout（原 plant / 控制器 / 评分器），按 commit 窗选优
-- **📐 STPP + 重定时前馈**：在认证安全模型上整形执行时序（v58 线上认证主链）
-- **🎯 v63 全轨迹 SQP + 目标多边形**：对原生安全选中表做目标面感知精修，保留原 `HYST`，不强推新政策
+- **🗺 路径规划**：按场景选择 `modes`（base / center / hybrid），配合离线中线表与局部修正表 `centerlines_*_v2s.json`
+- **⏱ 速度与跟车**：`vel0` / `vprof` / IDM / 让行等参数；单变量对比实验，有效配置保留、无效配置回滚
+- **🛡 安全跟踪**：侧向加速度、转角、预瞄等约束，与评分侧相关项对齐
+- **🔁 SAS v2**：在同一套车辆模型、控制器与评分器上做闭环候选搜索，按决策时间窗择优
+- **📐 STPP + 轨迹重定时**：在安全约束下调整执行时序（v58 线上主版本）
+- **🎯 v63 全轨迹 SQP + 目标区域**：对已通过安全检查的轨迹做目标区域精修，保留切换迟滞，避免强行换策略
 
-> 说明：官方 `inputs/`、HD 地图、隐藏场轨迹、Docker 提交镜像**不随本仓分发**，须按赛题官方渠道自备。上游许可证为 AGPL-3.0，见 [LICENSE](LICENSE) / [NOTICE](NOTICE)。
+> 官方 `inputs/`、高精地图、隐藏场景与 Docker 提交镜像**不随本仓提供**，请通过赛题官方渠道获取。许可证为 AGPL-3.0，见 [LICENSE](LICENSE) / [NOTICE](NOTICE)。
 
 ---
 
@@ -59,21 +59,21 @@
 
 | 指标 | 成绩 |
 |------|------|
-| **线上可绑定基线** | **v58-full-ff ≈ 96.12**（183 场均分 96.121366…） |
-| **本地公开 40** | **v63 = 97.572355** |
-| **本地已知 43** | **v63 = 97.096258…**（全到达 · 零车撞 · 零压界） |
-| **早期公开集阶梯** | baseline ~74 → fin2 ~90.23（本地公开 40，历史过程） |
-| **平台首评 → 认证链** | 首评 82.00 → … → v54 ≈95.996 → **v58 ≈96.12** |
+| **线上版本** | **v58 ≈ 96.12**（183 场均分 96.121366…） |
+| **本地公开 40 场** | **v63 = 97.572355** |
+| **本地 43 场** | **v63 = 97.096258…**（全部到达 · 零碰撞 · 零压界） |
+| **早期公开集** | 基线约 74 → 约 90.23（本地公开 40，过程记录） |
+| **线上演进** | 首评 82.00 → … → v54 ≈ 95.996 → **v58 ≈ 96.12** |
 
-**口径铁律**：本地 43 ≠ 线上 183；v63 是本地完整最佳，**未**作为线上认证包绑定。细节与提分链见 [SCORES.md](SCORES.md)。
+请区分：**本地 43 场均分 ≠ 线上 183 场均分**；v63 是本地最佳，**不是**已提交的线上版本。详见 [SCORES.md](SCORES.md)。
 
 <p align="center">
-  <img src="assets/score_chain_guikong.png" alt="规控线上提分链" width="720"/>
+  <img src="assets/score_chain_guikong.png" alt="规控线上提分曲线" width="720"/>
 </p>
-<p align="center"><sub>提分曲线（破纪录点）· 角色归因图见下</sub></p>
+<p align="center"><sub>线上提分曲线 · 下方为提交类型示意</sub></p>
 
 <p align="center">
-  <img src="assets/score_chain_roles.png" alt="破纪录 / 探针 / 回收角色归因" width="720"/>
+  <img src="assets/score_chain_roles.png" alt="提分 / 试探 / 回滚类提交示意" width="720"/>
 </p>
 
 ---
@@ -83,24 +83,24 @@
 | 项 | 内容 |
 |------|------|
 | **赛事** | [琶洲算法大赛 × 智能驾驶生态赛](https://deepvision.aicompetition-pz.com/#/homeDetail?id=2095413633562579532) |
-| **任务** | 基于感知结果 + 位姿 / 导航 / 动力学，在无信号灯路口与动态交互场景输出转向、油门、制动 |
+| **任务** | 结合感知结果、位姿、导航与动力学，在无信号灯路口与动态交互场景输出转向、油门、制动 |
 | **评分** | 安全性 50% + 效率性 30% + 路径完成度 20% |
-| **数据集（官方）** | 位姿序列、导航指令、动力学状态、感知结果；非结构化道路无信号灯路口；初/决赛内容一致、分布不同 |
-| **公开包** | 2 图（大排 / 江铜）· **40** 公开场景 JSON · baseline + README；线上评测约 **183** 场 |
-| **本仓演示 11 场** | dapai `1_3_10/1_3_15/2_3_5/3_2_2` · jiangtong `1_5_3/1_5_4/5_4_1/6_2_5/6_3_3/9_3_2/9_3_3` |
+| **数据集（官方）** | 位姿序列、导航指令、动力学状态、感知结果；非结构化道路无信号灯路口；初/决赛字段一致、分布不同 |
+| **公开包** | 两张地图（大排 / 江铜）· **40** 个公开场景 · baseline 与说明文档；线上评测约 **183** 场 |
+| **本仓演示 11 场** | 大排 `1_3_10/1_3_15/2_3_5/3_2_2` · 江铜 `1_5_3/1_5_4/5_4_1/6_2_5/6_3_3/9_3_2/9_3_3` |
 
-完整说明（含机制要点与官方链接）：[TASK_AND_DATA.md](TASK_AND_DATA.md)。官方数据须自行申领，**不**随本仓分发。
+完整说明见 [TASK_AND_DATA.md](TASK_AND_DATA.md)。官方数据需自行申请，**不**随本仓分发。
 
 ---
 
 ## 🎥 演示效果
 
-两种渲染视角，行为同源（v63 封箱轨迹）；镜头后处理不影响仿真。
+两种视角，对应同一套 v63 已验证轨迹；渲染后处理不改变仿真结果。
 
-| 视角 | 说明 | 完整 MP4 |
+| 视角 | 说明 | 完整视频 |
 |------|------|----------|
-| **跟随镜头** | 锁定自车 · EMA 跟拍 · 1080²，运动充满画面 | [Release `v63-demo-videos`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos)（23 文件，约 144MB） |
-| **全景 / 地图视角** | 1500² 宽幅，看清路网、背景车回放与整段路线 | [Release `v63-demo-videos-wide`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos-wide)（`wide_*`，约 55MB） |
+| **跟随镜头** | 锁定自车、平滑跟拍、1080²，便于观察近车运动 | [Release `v63-demo-videos`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos)（约 144MB） |
+| **全景 / 地图视角** | 1500² 宽幅，便于查看路网、背景车与整段路线 | [Release `v63-demo-videos-wide`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/tag/v63-demo-videos-wide)（`wide_*`，约 55MB） |
 
 ### 跟随镜头预览
 
@@ -110,7 +110,7 @@
   <img src="assets/v63_follow_jiangtong_1_5_4_480.gif" alt="follow jiangtong 1_5_4" width="24%">
   <img src="assets/v63_follow_jiangtong_6_3_3_480.gif" alt="follow jiangtong 6_3_3" width="24%">
 </p>
-<p align="center"><sub>左→右：dapai 1_3_10 · dapai 3_2_2 · jiangtong 1_5_4 · jiangtong 6_3_3（到达段预览）</sub></p>
+<p align="center"><sub>左→右：大排 1_3_10 · 大排 3_2_2 · 江铜 1_5_4 · 江铜 6_3_3（到达段）</sub></p>
 
 混剪：[`v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_highlights_1080.mp4)
 
@@ -122,13 +122,13 @@
   <img src="assets/v63_wide_jiangtong_6_3_3_480.gif" alt="wide jiangtong 6_3_3" width="24%">
   <img src="assets/v63_wide_highlights_preview_480.gif" alt="wide highlights preview" width="24%">
 </p>
-<p align="center"><sub>左→右：dapai 1_3_10 · jiangtong 1_5_4 · jiangtong 6_3_3 · 全景混剪节选</sub></p>
+<p align="center"><sub>左→右：大排 1_3_10 · 江铜 1_5_4 · 江铜 6_3_3 · 全景混剪节选</sub></p>
 
 全景混剪：[`wide_v63_highlights_1080.mp4`](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_highlights_1080.mp4)
 
 ### 成片清单（11 场 × 双倍速 × 双视角）
 
-每场均有 **1x 实时** 与 **0.5x 慢放**。跟随镜头文件名无前缀；全景文件名带 `wide_`。
+每场提供 **1x 实时** 与 **0.5x 慢放**。跟随镜头无文件名前缀；全景文件名带 `wide_`。
 
 | 场景 | 地图 | 跟随 1x | 全景 1x |
 |------|------|---------|--------|
@@ -144,32 +144,32 @@
 | 9_3_2 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_9_3_2_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_9_3_2_1x.mp4) |
 | 9_3_3 | 江铜 | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos/v63_jiangtong_intersection_9_3_3_1x.mp4) | [mp4](https://github.com/cainiao33/MineSim-MPC-AD-Control/releases/download/v63-demo-videos-wide/wide_v63_jiangtong_intersection_9_3_3_1x.mp4) |
 
-绿框=自车，蓝框=背景车；红轨=背景真值未来，绿轨=预测。0.5x 与混剪见对应 Release 页。
+绿色框为自车，蓝色框为背景车；红色为背景真值未来轨迹，绿色为预测轨迹。0.5x 与混剪见对应 Release 页面。
 
 ---
 
 ## ⚠️ 复现说明
 
-本仓库定位是**策略方案开源**（叠加层 + 方法叙事 + 演示），不是「克隆即满分」的完整仿真发行版：
+本仓库提供的是**策略代码与方法说明**，不是完整可独立运行的仿真发行版：
 
-- 必须自备**官方 mine_sim** 与竞赛授权数据（地图 / 公开 `inputs/`）
-- 线上 183 场隐藏输入与平台 Docker 评测环境**不在本仓**
-- 叠加脚本会改写 `devkit/` 中的 NEW/MOD 文件，并在首次覆盖时备份到 `.mpc_ad_overlay_backup/`
-- `planner.py` / `simple_control.py` / `sas_hook.py` 已做**路径可移植清洗**（去掉本机绝对路径）；公开 sha 与冻结 lab 生产树在这 3 个文件上不同，见 [MANIFEST.json](MANIFEST.json)
+- 需要自行准备**官方 mine_sim** 与竞赛授权数据（地图 / 公开 `inputs/`）
+- 线上 183 场中的隐藏场景与平台评测环境**不在本仓**
+- 安装脚本会覆盖 `devkit/` 中的新增与修改文件，并在首次覆盖时备份到 `.mpc_ad_overlay_backup/`
+- `planner.py` / `simple_control.py` / `sas_hook.py` 已去掉本机绝对路径，便于移植；这三份文件的公开校验和与内部冻结源码不同，见 [MANIFEST.json](MANIFEST.json)
 
-因此：同赛题持有官方包的读者可按下方步骤叠加复现公开场景；其他读者可将本仓当作回放型规控的工程参考（配置银行 + 闭环自仿真 + 执行精修）。
+已有官方数据包的读者可按下方步骤安装后复现公开场景；其他读者可将本仓作为回放型规控的工程参考。
 
 ---
 
-## 📦 快速叠加
+## 📦 安装与运行
 
 ```bash
 # 1) 官方 mine_sim 根目录须已含 devkit/planner.py 与 inputs/
-# 2) 叠加本仓
+# 2) 安装本仓策略补丁
 git clone https://github.com/cainiao33/MineSim-MPC-AD-Control.git
 bash MineSim-MPC-AD-Control/scripts/overlay_into_minesim.sh /path/to/official_mine_sim
 
-# 3) 在官方树内跑公开场景（使用你的 mine_sim Python 环境）
+# 3) 在官方目录中运行公开场景（使用你的 mine_sim Python 环境）
 cd /path/to/official_mine_sim
 python devkit/__main__.py \
   --scenario Scenario-dapai_intersection_1_3_10.json \
@@ -180,29 +180,29 @@ python devkit/__main__.py \
 
 | 变量 | 作用 |
 |------|------|
-| `MINE_SCEN_CONFIG` / `MINE_CFG` | 显式指定 `scen_config.json` |
+| `MINE_SCEN_CONFIG` / `MINE_CFG` | 指定 `scen_config.json` 路径 |
 | `MINE_CENTERLINE_DIR` | 中线表目录 |
-| `MINE_EXPECTED_JSON` | 可选期望耗时表 |
+| `MINE_EXPECTED_JSON` | 可选的期望耗时表 |
 
-缺省自动读取 `devkit/centerlines/scen_config.json`。
+默认读取 `devkit/centerlines/scen_config.json`。
 
 ---
 
 ## 🧠 方法要点
 
-1. **回放时序论**：背景车非反应回放；ego 乱变速 / 换径会自投冲突窗；恒速贴中线是早期基座。  
-2. **三层自适应银行**：路径 → 速度/IDM/让行 → alat/rot/look；单变量 A/B，族级裁决，输家免费回退。  
-3. **生产栈**：SAS 同码闭环 → STPP/重定时前馈（v58）→ v63 全轨迹 SQP + 目标多边形派发。
+1. **回放仿真特性**：背景车按参考轨迹开环行驶；自车随意变速或改道可能主动制造冲突；早期基线采用恒速贴中线更稳。
+2. **三层场景自适应配置**：路径 → 速度 / 跟车 / 让行 → 侧向加速度与转角约束；单变量对比，按同类场景归纳，无效改动及时回滚。
+3. **完整流水线**：SAS 闭环候选搜索 → STPP / 重定时（v58）→ v63 全轨迹 SQP 与目标区域精修。
 
-展开阅读：
+相关文档：
 
 | 文档 | 内容 |
 |------|------|
 | [TASK_AND_DATA.md](TASK_AND_DATA.md) | 赛题任务、评分、规控数据集与公开场景 |
-| [METHOD.md](METHOD.md) | 四幕方法叙事 |
-| [ARCHITECTURE.md](ARCHITECTURE.md) | 模块分组与配置发现顺序 |
-| [SCORES.md](SCORES.md) | 线上 / 本地分数分账与里程碑 |
-| [MANIFEST.json](MANIFEST.json) | 58 个叠加文件 sha256 |
+| [METHOD.md](METHOD.md) | 方法说明 |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 模块结构与配置查找顺序 |
+| [SCORES.md](SCORES.md) | 线上 / 本地分数说明与里程碑 |
+| [MANIFEST.json](MANIFEST.json) | 58 个策略文件的 sha256 |
 
 ---
 
@@ -210,14 +210,14 @@ python devkit/__main__.py \
 
 ```
 MineSim-MPC-AD-Control/
-├── overlay/devkit/          # 58 策略文件（54 NEW + 4 MOD），可直接覆盖
+├── overlay/devkit/          # 58 个策略文件（54 新增 + 4 修改），可直接覆盖安装
 │   ├── planner.py / predictor.py / simple_control.py
-│   ├── centerlines/scen_config.json          # 完整 183 场配置银行
+│   ├── centerlines/scen_config.json          # 183 场场景参数表
 │   ├── centerlines/centerlines_*_v2s.json
 │   ├── sas_*.py / stpp_*.py / executed_retiming*.py
 │   └── control_full_trace_*.py / ...
 ├── scripts/overlay_into_minesim.sh
-├── assets/                  # 提分图 + 跟随/全景预览 gif
+├── assets/                  # 提分曲线图 + 跟随/全景预览 gif
 ├── TASK_AND_DATA.md         # 任务场景与规控数据集
 ├── METHOD.md / ARCHITECTURE.md / SCORES.md
 ├── MANIFEST.json / NOTICE / LICENSE
@@ -229,7 +229,7 @@ MineSim-MPC-AD-Control/
 ## 📄 许可证与上游
 
 - 仿真器上游：MineSim / mine_sim（**AGPL-3.0**）
-- 本叠加层随 AGPL-3.0 发布；与官方树合并运行时适用 copyleft 义务
+- 本策略补丁同样以 AGPL-3.0 发布；与官方代码合并使用时需遵守 copyleft 义务
 - 归属与「不重分发官方数据」声明见 [NOTICE](NOTICE)
 
-若基于本仓改动并对外提供网络服务，请遵守 AGPL-3.0 的源码提供义务。
+若基于本仓修改并对外提供网络服务，请遵守 AGPL-3.0 的源码提供义务。

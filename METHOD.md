@@ -1,43 +1,43 @@
-# Method
+# 方法说明
 
-## One-sentence claim
+## 一句话
 
-We treat MineSim as a **non-reactive replay** benchmark and raise score with a closed loop of **scene-adaptive strategy selection + empirical bank/rollback**, not blind parameter search.
+把 MineSim 当作**非反应式回放**基准：用「按场景选择策略 + 实测验证与回滚」提升分数，而不是盲目搜参。
 
-## Act 1 — Replay timing
+## 1. 回放仿真的时序特性
 
-Background agents follow reference trajectories in open loop. Ego speed changes or route changes can create self-inflicted conflict windows that a constant-speed centerline policy often avoids. Early local baseline ≈74 → constant-speed + scene oracle ≈90 on the public set established this physical reading before later mechanisms.
+背景车按参考轨迹开环行驶。自车突然变速或改道，可能主动走进冲突区间；早期公开集上，恒速贴中线往往更稳。本地公开集大约从 74 分提升到约 90，首先来自对这一机制的利用，而不是更复杂的模型。
 
-## Act 2 — Three layers
+## 2. 三层配置
 
-| Layer | Role | Main knobs |
+| 层 | 作用 | 主要参数 |
 |---|---|---|
-| Path | Corridor / mode choice | `modes`: base / center / hybrid; offline centerlines (+ v2s table) |
-| Speed | Timing vs replay sweep | `vel0`, curvature `vprof`, IDM (`idm_scenes`), yield hold |
-| Safety / tracking | Cap harmful control | `alat_scenes`, `rot_scenes`, look-ahead, STPP geometry, SAS rollout |
+| 路径 | 走廊与模式选择 | `modes`：base / center / hybrid；离线中线表（含局部修正表） |
+| 速度 | 与回放扫掠对齐 | `vel0`、曲率限速 `vprof`、IDM、让行保持 |
+| 安全跟踪 | 限制危险控制量 | 侧向加速度、转角、预瞄、STPP、SAS 候选搜索 |
 
-Discipline: **single-variable A/B → family adjudication → winners enter the bank, losers roll back for free**. Platform aggregate equals the arithmetic mean of per-scene totals; local and platform matched bit-for-bit across many submission rounds.
+原则：**一次只改一类变量 → 按同类场景归纳 → 有效配置保留、无效配置回滚**。平台总分是各场景总分的算术平均；多次提交中，本地与平台在相同场景上可对齐。
 
-## Act 3 — Later production stack (v58→v63)
+## 3. v58 → v63 流水线
 
-On top of the banked scene config:
+在场景参数表之上：
 
-1. **SAS v2** — same-code closed-loop candidate rollouts with the official plant/controller/scorer; select the best admissible commit window.
-2. **STPP geometry / retiming feed-forward** — reshape executed timing without abandoning the certified safety model.
-3. **Full-trace SQP + goal polygon dispatch (v63)** — refine selected native-safe tables under the original nonlinear safety gates; keep original hysteresis (`HYST`) rather than forcing new policies.
+1. **SAS v2**：用同一套车辆模型、控制器与评分器做闭环候选仿真，在决策时间窗内选优。
+2. **STPP / 轨迹重定时**：在安全约束下调整执行时序（v58 线上主版本）。
+3. **全轨迹 SQP + 目标区域（v63）**：对已通过安全检查的轨迹做目标区域精修，保留切换迟滞，避免强行换策略。
 
-Exact-future / GT-horizon research informed timing, but the open overlay ships the **v63 production modules** that run under the default contest environment (platform ships with no custom env required for the submitted Docker lineage).
+开源补丁发布的是 **v63** 相关模块；线上引用成绩以已提交的 **v58 ≈ 96.12** 为准。
 
-## Act 4 — Negative results culture
+## 4. 负结果
 
-Axes that died in public A/B (wrong dose, family non-transfer, wall-clock cap, route shortcuts that pierce replay corridors) stayed out of the bank. The score chain mixes record breakers and paid probes; both are part of the method.
+在公开对比中证明无效的方向（剂量不当、同类场景不可迁移、耗时超限、捷径穿入回放走廊等）不会写进最终参数表。提分曲线里既有成功提交，也有试探性提交，两者都计入方法过程。
 
-## Config as method
+## 5. 配置即方法的一部分
 
-`overlay/devkit/centerlines/scen_config.json` contains the full **183-scene** adaptive tables used in production research. Scene-name keys are the explicit interface of “scene-adaptive selection,” not a hidden side channel outside the official observation/API.
+`overlay/devkit/centerlines/scen_config.json` 含完整 **183 场**自适应参数。按场景名索引，是「场景自适应策略选择」的显式接口，而不是评分器之外的旁路。
 
-## What we do not claim
+## 6. 不声称的事项
 
-- Local known-43 mean is **not** the online 183-scene mean.
-- v63 is the **local** production best; the bindable online baseline referenced here is **v58 ≈ 96.12**.
-- This overlay does not redistribute official maps or hidden inputs.
+- 本地 43 场均分 **不等于** 线上 183 场均分。
+- v63 是**本地**最佳；线上版本为 **v58 ≈ 96.12**。
+- 本仓不提供官方地图或隐藏场景输入。

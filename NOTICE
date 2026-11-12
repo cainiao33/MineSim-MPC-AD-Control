@@ -1,14 +1,14 @@
 MineSim-MPC-AD-Control
 ======================
 
-This repository redistributes a strategy overlay for the MineSim / mine_sim
+This repository publishes a strategy patch for the MineSim / mine_sim
 replay simulator used in mining autonomous-driving planning-control contests.
 
 Upstream
 --------
 - MineSim / mine_sim (and related OnSite-family simulation code) is licensed
   under the GNU Affero General Public License v3.0 (AGPL-3.0). See LICENSE.
-- This overlay modifies and extends that AGPL-covered work. Combined use with
+- This patch modifies and extends that AGPL-covered work. Combined use with
   the official simulator is therefore subject to AGPL-3.0.
 
 What this repo does NOT ship
@@ -19,11 +19,12 @@ What this repo does NOT ship
 - Hidden-scenario trajectory packs
 
 You must obtain the official mine_sim package and contest data through
-authorized channels, then apply this overlay on top of `devkit/`.
+authorized channels, then install this patch on top of `devkit/`.
 
 Attribution
 -----------
-Strategy code, scen_config banks, centerline v2s table, documentation, and
-demo videos in this repository were developed for the MPC-AD / mining AD
-planning-control track (v63 production line; online baseline referenced as
-v58). Absolute local paths were removed for portable open-source release.
+Strategy code, scene configuration tables, centerline correction tables,
+documentation, and demo videos in this repository were developed for the
+Pazhou Algorithm Competition × Intelligent Driving Ecosystem Track
+(planning/control). Local absolute paths were removed for portable release.
+Online score reference: v58 ≈ 96.12; local best referenced: v63.
